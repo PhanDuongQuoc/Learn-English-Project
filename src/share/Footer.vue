@@ -1,7 +1,7 @@
 <template>
 <!-- Footer 11 - Bootstrap Brain Component -->
   <!-- Footer -->
-    <footer class="py-sm-3 py-md-4 py-xl-6 mt-5">
+    <footer class="py-sm-3 py-xl-6 mt-5">
         <div class="bg-footer py-3 py-md-6 py-xl-9 py-xxl-10">
             <div class="container">
                 <div class="row justify-content-center">
@@ -170,7 +170,7 @@
                                             Hotline
                                         </h5>
                                         <p class="text-light mb-2">
-                                            <a href="tel:+84123456789" class="footer-link">
+                                            <a href="tel:+84123456789" class="footer-link footer-link-1">
                                                 <strong>+84 123 456 789</strong>
                                             </a>
                                         </p>
@@ -184,7 +184,7 @@
                                             Email
                                         </h5>
                                         <p class="text-light mb-2">
-                                            <a href="mailto:info@lingospeak.vn" class="footer-link">
+                                            <a href="mailto:info@lingospeak.vn" class="footer-link footer-link-1">
                                                 info@learnenglish.vn
                                             </a>
                                         </p>
@@ -197,7 +197,7 @@
                                             <i class="fas fa-map-marker-alt me-2 text-warning"></i>
                                             Địa chỉ
                                         </h5>
-                                        <p class="text-light mb-2">
+                                        <p class="text-light mb-2 footer-link-1">
                                             
                                             Quận 5, TP.HCM
                                         </p>
@@ -315,7 +315,7 @@ export default{
 <style scoped>
      /* Footer Styles */
         .bg-footer {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #4a33d9 0%, #4a33d9 100%);
             position: relative;
             overflow: hidden;
         }
@@ -346,9 +346,12 @@ export default{
         }
         
         .footer-link:hover {
-            color: #ffeb3b;
+            color: #dd0182;
             text-decoration: none;
             transform: translateX(5px);
+        }
+        .footer-link-1:hover{
+            color: #4a33d9;
         }
         
         .footer-link i {
@@ -370,15 +373,15 @@ export default{
         }
         
         .footer-link-small:hover {
-            color: #ffeb3b;
+            color: #dd0182;
             text-decoration: none;
         }
         
         .contact-info {
-            background: rgba(255,255,255,0.05);
+           background-color: #dd0182 !important;
             padding: 20px;
             border-radius: 10px;
-            border-left: 4px solid #ffeb3b;
+            border-left: 4px solid white;
             transition: all 0.3s ease;
         }
         
@@ -406,7 +409,7 @@ export default{
         }
         
         .social-link:hover {
-            background: #ffeb3b;
+            background: #dd0182;
             color: #1e3c72;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(255,235,59,0.3);
@@ -415,4 +418,5 @@ export default{
         .social-link:hover i {
             transform: scale(1.2);
         }
+      
 </style>
