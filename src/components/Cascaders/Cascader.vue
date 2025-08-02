@@ -29,21 +29,28 @@ export default {
       type: String,
       default: '#1e3c72'
     },
+    bgDropDown:{
+      type:String,
+      default:'#dd0182'
+    },
     textColor: {
       type: String,
       default: '#ffffff'
     },
     styleWidth:{
-      rype:String,
+      type:String,
       default:'150px'
-    }
+    },
+
   },
   computed: {
     customStyle() {
       return {
         '--bg-color': this.bgColor,
         '--text-color': this.textColor,
-        '--style-width':this.styleWidth
+        '--style-width': this.styleWidth,
+       
+    
       }
     }
   },
@@ -71,16 +78,18 @@ export default {
   border-radius: 15px;
   width: var(--style-width) !important;
   box-shadow: none;
+
 }
 .my-wrapper .el-input__inner {
   color: var(--text-color) !important;
 }
 
- .el-popper.is-light {
-  background-color: white !important;
-  color: var(--text-color);
-  margin-top: 10px;
+.el-popper.is-light {
+  margin-top: 0px;
+  border: 1px solid white;
+  
 }
+
 
 .my-wrapper .el-input__wrapper:focus,
 .my-wrapper .el-input__wrapper.is-focus,
@@ -89,6 +98,9 @@ export default {
   outline: none !important;
 }
 
+.el-cascader-node.in-active-path, .el-cascader-node.is-active, .el-cascader-node.is-selectable.in-checked-path{
+  color: #dd0182 !important;
+}
 .my-wrapper .el-input__wrapper:hover {
   box-shadow: none !important;
   border: 1px solid transparent !important;
