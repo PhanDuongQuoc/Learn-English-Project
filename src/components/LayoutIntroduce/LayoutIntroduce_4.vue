@@ -3,7 +3,7 @@
     <el-col :span="10">
         <div class="Media">
             <div class="media-image" data-aos="fade-right" data-aos-duration="4000">
-                <img :src="Content.image" alt="">
+                <img :style="customStyle" :src="Content.image" alt="">
             </div>
         </div>
     </el-col>
@@ -18,6 +18,13 @@
                     <p class="content">
                         {{ Content.content }}
                     </p>
+                     <br>
+                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center justify-content-md-center" data-aos="fade-right" data-aos-duration="4000">
+                        <a href="#!" class="btn bsb-btn-2xl btn-outline-dark">
+                            {{ Content.button }}
+                        </a>
+                    </div>
+                    <br/>
                 </div>
         </div>
     </el-col>
@@ -26,12 +33,24 @@
 
 <script>
 export default{
-    name:'AppLayoutIntroduce_2',
+    name:'AppLayoutIntroduce_4',
     props:{
         Content:{
             type: Object,
             required: true
-        }
+        },
+        styleWidth:{
+            type:String,
+            default:'500px'
+        },
+    },
+    computed:{
+            customStyle() {
+            return {
+                '--style-width': this.styleWidth,
+            
+            }
+        },
     }
 }
 </script>
@@ -54,6 +73,21 @@ export default{
         width: 75%;
         
     }
+     .btn{
+        background-color: #dd0182 !important;
+        border: 2px solid white;
+        color: white !important;
+        border-radius: 10px !important;
+        text-transform: uppercase;
+        padding: 10px;
+        box-shadow: 14px 4px 15px rgba(0,0,0,0.2);
+      
+    }
+    .btn:hover{
+        background-color:white !important;
+        border: 2px solid #dd0182;
+        color: #dd0182 !important;
+    }
     .title{
         color: #dd0182;
         font-size: 45px;
@@ -67,7 +101,7 @@ export default{
         text-decoration: none;
     }
     .media-image img{
-            width: 550px;
+            width: var(--style-width);
     }
    
     @media(max-width:768px){
@@ -77,10 +111,10 @@ export default{
           
         }
          .Media{
-             height: 300px;
+             
         }
         .Content{
-              height: 300px;
+            height: 300px;
         }
         .title{
             color: #dd0182;
@@ -90,7 +124,17 @@ export default{
             font-size: 15px;
         }
         .media-image img{
-            width: 350px;
+            width: 350px !important;
+        }
+        .btn{
+        background-color: #dd0182 !important;
+        border: 2px solid white;
+        color: white !important;
+        border-radius: 10px !important;
+        text-transform: uppercase;
+        font-size: 10px;
+        box-shadow: 14px 4px 15px rgba(0,0,0,0.2);
+    
         }
     }
 

@@ -3,43 +3,63 @@
         <Banner_1/>
     </div>
     <br>
-    <div class="Layout_1">
+    <div data-aos="fade-left" data-aos-duration="4000" class="Layout_1">
         <LayoutIntroduce_1 :Content="contentData_1"/>
     </div>
     <br>
-    <div class="Layout_2">
+    <div data-aos="fade-right" data-aos-duration="4000" class="Layout_2">
         <LayoutIntroduce_2 :Content="contentData_2"/>
     </div>
-    <div class="Layout_3">
+    <div data-aos="fade-left" data-aos-duration="4000" class="Layout_3">
         <LayoutIntroduce_1 :Content="contentData_3"/>
     </div>
-    <div class="Layout_4">
+    <div data-aos="fade-right" data-aos-duration="4000" class="Layout_4">
          <LayoutIntroduce_2 :Content="contentData_4"/>
     </div>
     <div class="Banner_2">
         <Banner_2/>
     </div>
-    <div class="Banner_3">
+    <div data-aos="fade-left" data-aos-duration="4000" class="Banner_3">
         <Banner_3 :ContentBanner="contentData_5"/>
     </div>
-    <div class="Layout_3">
+    <div data-aos="fade-right" data-aos-duration="4000" class="Layout_3">
         <LayoutIntroduce_3 :Content="contentData_6"/>
+    </div>
+    <br>
+    <div data-aos="fade-left" data-aos-duration="4000" class="layout_4">
+        <LayoutIntroduce_4 :Content="contentData_7"/>
+    </div>
+    <div data-aos="fade-right" data-aos-duration="4000" class="Layout_5">
+        <LayoutIntroduce_3 styleWidth="600px" :Content="contentData_8"/>
+    </div>
+    <br/>
+    <div data-aos="fade-left" data-aos-duration="4000" class="layout_6">
+        <LayoutIntroduce_4 styleWidth="450px" :Content="contentData_9"/>
+    </div>
+    <br/>
+    <div data-aos="zoom-out" data-aos-duration="4000" class="Banner_4">
+        <Banner_4/>
     </div>
 </template>
 
 <script>
 import LayoutIntroduce_1 from '@/components/LayoutIntroduce/LayoutIntroduce_1.vue';
 import LayoutIntroduce_2 from '@/components/LayoutIntroduce/LayoutIntroduce_2.vue';
+import LayoutIntroduce_3 from '@/components/LayoutIntroduce/LayoutIntroduce_3.vue';
+import LayoutIntroduce_4 from '@/components/LayoutIntroduce/LayoutIntroduce_4.vue';
 import Banner_1 from '@/components/Banners/Banner_1.vue';
 import Banner_2 from '@/components/Banners/Banner_2.vue';
 import Banner_3 from '@/components/Banners/Banner_3.vue';
-import LayoutIntroduce_3 from '@/components/LayoutIntroduce/LayoutIntroduce_3.vue';
+import Banner_4 from '@/components/Banners/Banner_4.vue';
+
 export default{
     name:'HomePage',
-    components:{ Banner_1, Banner_2,Banner_3 ,LayoutIntroduce_1,LayoutIntroduce_2,LayoutIntroduce_3},
+    components:{ Banner_1, Banner_2,Banner_3, Banner_4,
+                LayoutIntroduce_1,LayoutIntroduce_2,
+                LayoutIntroduce_3,LayoutIntroduce_4},
     data() {
     return {
-      contentData_1: {
+        contentData_1: {
         title: 'Miễn phí. vui nhộn. hiệu quả',
         content: 'Học cùng LearnEnglish rất vui nhộn, các nghiên cứu đã chứng minh ứng dụng thật sự hiệu quả! Các bài học nhỏ gọn sẽ giúp bạn ghi điểm, mở khóa cấp độ mới và luyện tập kỹ năng giao tiếp hữu dụng.',
         image: require('@/assets/image/banner_1/media_1.png')
@@ -65,11 +85,31 @@ export default{
             image: 'https://static.vecteezy.com/system/resources/thumbnails/012/025/326/small_2x/united-kingdom-flag-in-grunge-style-png.png'
         },
 
-         contentData_6:{
+        contentData_6:{
             title: 'Learn english test',
             content: 'Là kỳ thi tiếng Anh tiện lợi, nhanh chóng với chi phí phải chăng, với sự kết hợp từ những nghiên cứu khoa học mới nhất và trí thông minh nhân tạo (AI) nhằm trao cơ hội giúp tất cả mọi người có thể thực hiện bài thi từ bất kỳ đâu, vào bất kỳ lúc nào khi họ thấy thoải mái nhất.',
-            image: 'https://images.credly.com/images/52b4c697-5bc3-44eb-9413-56abe393cf8c/twitter_thumb_201604_Artboard_1_copy_6.png'
+            image: 'https://images.credly.com/images/52b4c697-5bc3-44eb-9413-56abe393cf8c/twitter_thumb_201604_Artboard_1_copy_6.png',
+            button:'CHỨNG NHẬN TRÌNH ĐỘ TIẾNG ANH'
         },
+
+        contentData_7:{
+            title: 'Learn english for schools',
+            content: 'Dành cho các giáo viên! Công cụ hỗ trợ miễn phí giúp học viên của bạn học ngoại ngữ thông qua ứng dụng Duolingo, cả trong và ngoài lớp học.',
+            image:require('@/assets/image/Layout/english.png'),
+            button:'MỞ LỚP HỌC CỦA BẠN NGAY NÀO'
+        },
+        contentData_8:{
+            title: 'Learn English ABC',
+            content: 'Từ học ngoại ngữ cho tới học đọc! Với các bài học đánh vần vui nhộn và những câu chuyện thú vị, Duolingo ABC giúp trẻ em từ 3-8 tuổi học đọc và viết - 100% miễn phí.',
+            image:require('@/assets/image/Layout/english_1.png'),
+            button:'Tìm hiểu thêm về abc'
+        },
+        contentData_9:{
+            title: 'Learn english math',
+            content: 'Vẫn là các bài học miễn phí và nhỏ gọn - nhưng là dành cho môn Toán! Các bài học vui nhộn giúp học sinh tiến bộ trên lớp còn người lớn có thể sử dụng để luyện tập thêm trí não và nâng cấp khả năng toán học.',
+            image:require('@/assets/image/Layout/englishmath.png'),
+            button:'CHINH PHỤC MÔN TOÁN BẰNG TIẾNG ANH'
+        }
 
     }
   }
@@ -80,7 +120,5 @@ export default{
     .Banner_1{
         margin-top: 135px;
     }
-    .Banner_3{
-        /* background-color: #dd0182; */
-    }
+    
 </style>

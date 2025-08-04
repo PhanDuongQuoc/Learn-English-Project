@@ -2,14 +2,14 @@
     <section class="Banner mt-5 mt-sm-4 mt-md-3 mt-lg-2">
         <div class="container-banner">
             <div class="row-banner">
-                <div class="col-12">
+                <div class="col-12" >
                     <div class="container-fluid bsb-hero-6 bsb-overlay border"
                     :style="{
                         '--bsb-overlay-opacity': '0.6',
                         '--bsb-overlay-bg-color': 'var(--bs-light-rgb)',
                         backgroundImage: `url(${require('@/assets/image/banner_1/banner_image_1.jpg')})`
                         }">                
-                        <div class="row justify-content-md-center align-items-center">
+                        <div data-aos="fade-up" class="row justify-content-md-center align-items-center">
                             <div class="col-12 col-md-11 col-xl-10 mt-5 mt-sm-4 mt-md-3 mt-lg-2 content-banner">
                                 <h2 class="display-1 text-center text-md-center text-shadow-head fw-bold mb-4  mt-5 ">Học ngoại ngữ miễn phí, vui nhộn và hiệu quả!</h2>
                                 <p class="lead text-center text-md-start text-shadow-body mb-5 d-flex justify-content-sm-center justify-content-md-center">

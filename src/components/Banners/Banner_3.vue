@@ -8,7 +8,7 @@
         </div>
     </el-col>
 
-    <el-col :span="14">
+    <el-col data-aos="fade-up"  data-aos-duration="8000"  :span="14">
         <div class="Content">
                 <div class="content-wrap">
                     <h3 class="title-small">
@@ -108,6 +108,9 @@ export default{
             flex-direction: column;
             align-items: center;
           
+        }
+        .Media{
+            height: 300px;
         }
         .title{
             color: #dd0182;

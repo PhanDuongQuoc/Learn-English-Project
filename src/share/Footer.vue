@@ -1,13 +1,13 @@
 <template>
 <!-- Footer 11 - Bootstrap Brain Component -->
   <!-- Footer -->
-    <footer class="py-sm-3 py-xl-6 mt-5">
+    <footer class="py-sm-3 py-xl-6 footer" >
         <div class="bg-footer py-3 py-md-6 py-xl-9 py-xxl-10">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-11">
                         <!-- Widgets -->
-                        <section class="mb-4 mb-md-5 mb-xl-9 mb-xxl-10">
+                        <section class="mb-4 mb-md-5 mb-xl-9 mb-xxl-10" data-aos="fade-right" data-aos-duration="8000" >
                             <div class="row gy-4 gy-md-0">
                                 <div class="col-6 col-md-3">
                                     <div class="link-wrapper">
@@ -161,7 +161,7 @@
                         </section>
 
                         <!-- Contact Info -->
-                        <section class="mb-4 mb-md-5">
+                        <section class="mb-4 mb-md-5" data-aos="fade-left" data-aos-duration="8000" >
                             <div class="row gy-4">
                                 <div class="col-md-4">
                                     <div class="contact-info">
@@ -208,7 +208,7 @@
                         </section>
 
                         <!-- Terms & Privacy -->
-                        <div class="mb-3">
+                        <div class="mb-3" data-aos="fade-right" data-aos-duration="8000" >
                             <div class="row">
                                 <div class="col-12">
                                     <div class="link-wrapper">
@@ -244,7 +244,7 @@
                         </div>
 
                         <!-- Copyright & Social -->
-                        <div class="border-top border-light border-opacity-25 pt-4">
+                        <div class="border-top border-light border-opacity-25 pt-4" data-aos="fade-left" data-aos-duration="8000" >
                             <div class="row gy-3 align-items-center">
                                 <div class="col-12 col-md-6">
                                     <div class="copyright-wrapper">
@@ -301,7 +301,7 @@
         </div>
     </footer>
 </template>
-
+ 
 
 <script>
 export default{
@@ -314,6 +314,9 @@ export default{
 
 <style scoped>
      /* Footer Styles */
+        .footer{
+                margin-top: -17px;
+        }
         .bg-footer {
             background: linear-gradient(135deg, #4a33d9 0%, #4a33d9 100%);
             position: relative;
@@ -327,7 +330,7 @@ export default{
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            /* background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>'); */
             z-index: 1;
         }
         

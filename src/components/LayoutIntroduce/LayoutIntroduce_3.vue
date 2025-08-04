@@ -2,7 +2,7 @@
  <el-row :span="24" class="container">
     <el-col :span="14">
        <div class="Content">
-            <div class="content-wrap">
+            <div class="content-wrap" data-aos="fade-left" data-aos-duration="4000">
                 <h2 class="title">
                     {{Content.title}}
                 </h2>
@@ -11,9 +11,9 @@
                     {{ Content.content }}
                 </p>
                 <br>
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center justify-content-md-center">
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center justify-content-md-center" data-aos="fade-left" data-aos-duration="4000">
                     <a href="#!" class="btn bsb-btn-2xl btn-outline-dark">
-                         Chứng nhận trình độ tiếng anh
+                        {{ Content.button }}
                     </a>
                 </div>
             </div>
@@ -21,8 +21,8 @@
     </el-col>
     <el-col :span="10">
         <div class="Media">
-            <div class="media-image">
-                <img :src="Content.image" alt="">
+            <div class="media-image" data-aos="fade-left" data-aos-duration="4000">
+                <img :style="customStyle" :src="Content.image" alt="">
             </div>
         </div>
     </el-col>
@@ -36,7 +36,19 @@ export default{
         Content:{
             type: Object,
             required: true
-        }
+        },
+        styleWidth:{
+            type:String,
+            default:'500px'
+        },
+    },
+    computed:{
+            customStyle() {
+            return {
+                '--style-width': this.styleWidth,
+            
+            }
+        },
     }
 }
 </script>
@@ -65,13 +77,14 @@ export default{
     }
     .content{
         font-size: 20px;
+        color: rgb(119,119,119);
     }
     .content-link{
         color: #4a33d9;
         text-decoration: none;
     }
     .media-image img{
-            width: 500px;
+            width: var(--style-width);
     }
      .btn{
         background-color: #dd0182 !important;
@@ -94,6 +107,10 @@ export default{
             align-items: center;
           
         }
+         .Media{
+            height: 300px;
+        }
+  
         .title{
             color: #dd0182;
             font-size: 20px;
@@ -106,16 +123,16 @@ export default{
            
         }
 
-          .btn{
-            background-color: #dd0182 !important;
-            border: 2px solid white;
-            color: white !important;
-            border-radius: 10px !important;
-            text-transform: uppercase;
-            font-size: 10px;
-            box-shadow: 14px 4px 15px rgba(0,0,0,0.2);
-      
-            }
+        .btn{
+        background-color: #dd0182 !important;
+        border: 2px solid white;
+        color: white !important;
+        border-radius: 10px !important;
+        text-transform: uppercase;
+        font-size: 10px;
+        box-shadow: 14px 4px 15px rgba(0,0,0,0.2);
+    
+        }
     }
 
 </style>

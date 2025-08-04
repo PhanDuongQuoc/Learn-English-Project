@@ -21,6 +21,10 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 #app {
   font-family: "Outfit", sans-serif;
   -webkit-font-smoothing: antialiased;

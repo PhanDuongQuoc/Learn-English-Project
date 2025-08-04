@@ -2,7 +2,7 @@
  <el-row :span="24" class="container">
     <el-col :span="14">
        <div class="Content">
-            <div class="content-wrap">
+            <div class="content-wrap" data-aos="fade-left" data-aos-duration="4000">
                 <h2 class="title">
                     {{Content.title}}
                 </h2>
@@ -15,7 +15,7 @@
     </el-col>
     <el-col :span="10">
         <div class="Media">
-            <div class="media-image">
+            <div class="media-image" data-aos="fade-left" data-aos-duration="4000">
                 <img :src="Content.image" alt="">
             </div>
         </div>
@@ -59,6 +59,7 @@ export default{
     }
     .content{
         font-size: 20px;
+        color: rgb(119,119,119);
     }
     .content-link{
         color: #4a33d9;
@@ -74,12 +75,19 @@ export default{
             align-items: center;
           
         }
+        .Media{
+             height: 300px;
+        }
+        .Content{
+              height: 300px;
+        }
         .title{
             color: #dd0182;
             font-size: 20px;
         }
         .content{
             font-size: 15px;
+        
         }
         .media-image img{
             width: 350px;

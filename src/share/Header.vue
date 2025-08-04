@@ -1,11 +1,26 @@
 <template>
   <header class="header">
-    <div class="top-banner flex-column flex-md-row align-items-center gap-1 mt-8 mt-md-0">
-        <div class="container">
+    <div class="top-banner flex-column flex-md-row align-items-center gap-1 mt-8 mt-md-0" :class="{ show: isMenuOpen_2 }">
+        <div class="container" data-aos="fade-left" data-aos-duration="4000">
             <p class="text-title">HỌC TIẾNG ANH GIAO TIẾP CÙNG GIÁO VIÊN IELTS 8.0+, GIÁO VIÊN BẢN XỨ & PHƯƠNG PHÁP SHADOWING</p>
         </div>
 
-        <div class="dropdown">
+       <div class="button-header" data-aos="fade-left" data-aos-duration="4000">
+        <div class="message">
+            <i class="fa-solid fa-message"></i>
+        </div>
+        <div class="eath">
+            <i class="fa-solid fa-earth-americas"></i>
+        </div>
+        <div class="notification">
+            <i class="fa-solid fa-bell"> </i>
+        </div>
+         <div class="button-start">
+             <button class="btn cta-button-start" data-aos="fade-left" data-aos-duration="4000">
+                   Bất đầu
+             </button>
+        </div>
+        <div class="dropdown" data-aos="fade-left" data-aos-duration="4000">
             <Cascader
               v-model="lang"
                 :options="languageOptions"
@@ -15,50 +30,51 @@
               
                 />
         </div>
+       </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg main-header">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg main-header" :class="{ show: isMenuOpen_2 }">
+        <div class="container" data-aos="fade-left" data-aos-duration="4000">
             <a class="logo" href="#">
                 <div class="logo-img">
-                    <img class="logo-main" src="https://media.istockphoto.com/id/1306202399/vector/vector-logo-or-icon-with-big-ben-for-learn-english.jpg?s=612x612&w=0&k=20&c=bYjpgt6laegr5hkj0wZBSf03Qd06W6ToXBuL4_kgg8E=" alt="">
+                    <img class="logo-main" :class="{ show: isMenuOpen_2 }" src="https://media.istockphoto.com/id/1306202399/vector/vector-logo-or-icon-with-big-ben-for-learn-english.jpg?s=612x612&w=0&k=20&c=bYjpgt6laegr5hkj0wZBSf03Qd06W6ToXBuL4_kgg8E=" alt="">
                 </div>
-                <h1 class="logo-text">Learn English</h1>
+                <h1 class="logo-text" :class="{ show: isMenuOpen_2 }">Learn English</h1>
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+           <button class="navbar-toggler" :class="{ show: isMenuOpen_2 }" type="button" @click="toggleMenu">
+                <span class="navbar-toggler-icon" :class="{ show: isMenuOpen_2 }"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" :class="{ show: isMenuOpen }" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center d-flex flex-column flex-md-row align-items-center gap-2 mt-3 mt-md-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Trang chủ</a>
+                        <a class="nav-link" @click="toggleMenu" href="#">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Giới thiệu</a>
+                        <a class="nav-link" @click="toggleMenu" href="#">Giới thiệu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Từ vựng</a>
+                        <a class="nav-link" @click="toggleMenu" href="#">Từ vựng</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" @click="toggleMenu" href="#">
                             Phương pháp học
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
+                        <a class="nav-link" @click="toggleMenu" href="#">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Video</a>
+                        <a class="nav-link" @click="toggleMenu" href="#">Video</a>
                     </li>
                     <li class="nav-item">
-                        <button class="btn cta-button">
+                        <button class="btn cta-button" @click="toggleMenu">
                             <i class="fas fa-sign-in-alt me-2"></i>
                             Đăng nhập
                         </button>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" @click="toggleMenu">
                         <button class="btn cta-button">
                             <i class="fas fa-user-plus me-2"></i>
                             Đăng ký ngay
@@ -81,6 +97,8 @@ export default{
     },
     data(){
         return{
+            isMenuOpen: false,
+            isMenuOpen_2:false,
             lang: ['tieng_viet'],
             languageOptions :[
                 { value: 'tieng_viet', label: 'Tiếng Việt' },
@@ -109,6 +127,13 @@ export default{
             ]
 
         }
+        
+    },
+    methods: {
+        toggleMenu() {
+            this.isMenuOpen = !this.isMenuOpen;
+            this.isMenuOpen_2 = !this.isMenuOpen_2; 
+        }
     }
 }
 </script>
@@ -133,11 +158,30 @@ export default{
             display: flex;
             
         }
+        .notification , .eath , .message{
+            font-size: 23px;
+            margin-right: 15px;
+            color: white;
+    
+        }
+        .fa-solid{
+             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+        }
+
       
-            .text-title{
-                margin-left: 50px;
-            
-            }
+
+        .fa-solid:hover{
+         color: #dd0182;
+        }
+        .button-header{
+            display: flex;
+        }
+      
+        .text-title{
+            margin-left: 200px;
+        
+        }
         .dropdown{
             margin-right: 20px;
         }
@@ -206,13 +250,31 @@ export default{
         .cta-button {
             background:  #4a33d9;
             border: none;
-        
             border-radius: 25px;
             color: white;
             font-weight: bold;
             text-transform: uppercase;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button-start {
+            background:  #dd0182;
+            border: none;
+            width: 130px;
+            font-size: 14px;
+            border-radius: 25px;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-right: 5px;
+        }
+
+        .cta-button-start:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: white ;
+            color:#dd0182 ;
         }
         
         .cta-button:hover {
@@ -251,12 +313,88 @@ export default{
          
         }
         @media (max-width:768px){
+             .cta-button {
+                background: #dd0182;
+                border: none;
+                border-radius: 25px;
+                color: white;
+                font-weight: bold;
+                text-transform: uppercase;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+            .cta-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+                background: white ;
+                color:#dd0182 ;
+            }
+            .top-banner.show {
+                display: none !important;
+            }
+            .navbar-toggler-icon.show{
+               background-color: #dd0182;
+               border-radius: 5px;
+            }
+            .main-header.show{
+                background-color: white;
+            }
+            .navbar-toggler.show{
+                border: 1px solid white;
+            }
+            .logo-main{
+                    width: 50px;
+                    height: 50px;
+                    margin-left: 25px;
+                    border: 3px solid #1e3c72;
+            }
+            .logo-text.show{
+                font-size: 20px;
+                color: #dd0182;
+              
+            }
+            .nav-item .nav-link{
+                color: #4a33d9 !important;
+            }
             .dropdown{
                 margin: 0 auto;
             }
             .text-title{
                 margin: 0 auto;
+                font-size: 12px;
             }
+             .cta-button-start {
+                background:  #dd0182;
+                margin-right: 5px;
+                border: none;
+                width: 120px;
+                font-size: 14px;
+                border-radius: 25px;
+                color: white;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+            .navbar-toggler{
+                border: 1px solid #dd0182;
+            }
+            .cta-button{
+                width: 150px;
+                font-size: 13px;
+            }
+            .navbar-collapse{
+                background-color: white;
+            }
+           
+            .logo-main{
+                width: 50px;
+                height: 50px;
+                margin-left: 25px;
+            }
+            .logo-text{
+                font-size: 20px;
+              
+            }
+         
         }
         
 </style>
