@@ -13,7 +13,7 @@
             <i class="fa-solid fa-earth-americas"></i>
         </div>
         <div class="notification">
-            <i class="fa-solid fa-bell"> </i>
+            <i class="fa-solid fa-bell" @click="showDialog = true"> </i>
         </div>
          <div class="button-start">
              <button class="btn cta-button-start" data-aos="fade-left" data-aos-duration="4000">
@@ -31,8 +31,9 @@
                 />
         </div>
        </div>
+      
     </div>
-
+    <NotificationCard v-model="showDialog" />
     <nav class="navbar navbar-expand-lg main-header" :class="{ show: isMenuOpen_2 }">
         <div class="container" data-aos="fade-left" data-aos-duration="4000">
             <a class="logo" href="#">
@@ -90,13 +91,16 @@
 
 <script>
 import Cascader from '@/components/Cascaders/Cascader.vue';
+import NotificationCard from '@/components/Notifications/NotificationCard.vue';
 export default{
     name:'AppHeater',
     components:{
-        Cascader
+        Cascader,
+        NotificationCard
     },
     data(){
         return{
+            showDialog: false,
             isMenuOpen: false,
             isMenuOpen_2:false,
             lang: ['tieng_viet'],
