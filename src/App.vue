@@ -32,4 +32,31 @@ html, body {
   text-align: center;
   color: #2c3e50;
 }
+.el-dialog{
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+    bottom: 30px !important;
+
+}
+
+.el-overlay-dialog {
+  align-items: flex-start !important;
+  background-color: rgba(2, 2, 2, 0.5);
+  padding-top: 40px;
+  overflow: hidden !important;
+
+
+}
+ @media (max-width:768px){
+   
+  .el-overlay-dialog {
+     top: 0 !important;
+   
+  }
+  .el-dialog{
+      top:25px  !important;
+
+  }
+    
+  }
 </style>

@@ -1,39 +1,42 @@
 <template>
   <el-dialog
-  v-model="visible"
+  v-model="visiblemap"
   :width="dialogWidth"
   center
   destroy-on-close
   @close="handleClose"
-  class="custom-dialog custom-notifi"
+  class="custom-dialog custommap"
   >
   <template #header>
     <div class="titlecard-container">
      
       <div class="titlecard">
-        <div class="notification" data-aos="fade-left" data-aos-duration="20000">
-          <i class="fa-solid fa-bell" @click="showDialog = true"></i>
+        <div class="Search" data-aos="fade-left" data-aos-duration="20000">
+           <i class="fa-solid fa-location-dot"></i>
         </div>
         <h4 class="title" data-aos="fade-left" data-aos-duration="20000">
-          Thông báo
+          Google Map
         </h4>
       </div>
     </div>
   </template>
 
-  
-    <div class="dialog-content" data-aos="fade-left" data-aos-duration="20000">
-      <p class="intro">Bạn có 3 thông báo mới:</p>
-      <ul class="noti-list">
-        <li>Lịch học mới đã được cập nhật</li>
-        <li>Bạn nhận được tin nhắn từ giáo viên</li>
-        <li>Đừng quên làm bài tập hôm nay</li>
-      </ul>
+  <div class="SearchMap" data-aos="fade-left" data-aos-duration="20000">
+    <div class="ratio ratio-16x9 border-map" >
+        <iframe class="iframe-map"  
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15677.637159614036!2d106.7122688!3d10.7799315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f4649e7ca29%3A0x55f531b6120cae3b!2zTmjDoCBow6F0IFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1754358494411!5m2!1svi!2s" 
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
     </div>
+  </div>
+
+
+
+  
 
     <template #footer>
         <div class="close-icon">
-          <i class="fa-solid fa-circle-xmark" @click="visible = false"></i>
+          <i class="fa-solid fa-circle-xmark" @click="visiblemap = false"></i>
         </div>
     </template>
 
@@ -42,7 +45,7 @@
 
 <script>
 export default {
-  name: 'NotificationDialogCard',
+  name: 'MapCard',
   props: {
     modelValue: {
       type: Boolean,
@@ -51,7 +54,7 @@ export default {
   },
   data() {
     return {
-      visible: this.modelValue,
+      visiblemap: this.modelValue,
       screenWidth: window.innerWidth
     }
   },
@@ -60,7 +63,7 @@ export default {
     },
   computed: {
     dialogWidth() {
-        return this.screenWidth <= 768 ? '95%' : '800px';
+        return this.screenWidth <= 768 ? '95%' : '1000px';
     }
  },
  beforeUnmount() {
@@ -68,7 +71,7 @@ export default {
 },
   watch: {
     modelValue(val) {
-      this.visible = val
+      this.visiblemap = val
     },
     visible(val) {
       this.$emit('update:modelValue', val)
@@ -80,7 +83,7 @@ export default {
     this.screenWidth = window.innerWidth;
   },
   handleClose() {
-    this.visible = false;
+    this.visiblemap = false;
     this.$emit('update:modelValue', false);
   }
   }
@@ -89,17 +92,23 @@ export default {
 
 <style scoped>
 
-.button-notifi{
-    background-color: #dd0182;
-    border: 1px solid #dd0182;
+    .button-notifi{
+        background-color: #dd0182;
+        border: 1px solid #dd0182;
+        
+    }
+
+    .iframe-map{
     
-}
+        border: 1px solid #dd0182;
+        border-radius: 25px;
+    }
 
   .titlecard-container {
     position: relative;
     width: 100%;
   }
-
+ 
   .close-icon {
     position: absolute;
     top: 10px;
@@ -110,7 +119,7 @@ export default {
   }
 
 
- .notification {
+ .Search {
     font-size: 23px;
     margin-right: 15px;
     color: #dd0182;
@@ -150,11 +159,7 @@ export default {
     color: #dd0182;
     border: 1px solid #dd0182;
 }
-.dialog-content {
-  padding: 10px 20px;
-  font-size: 18px;
-  color: #333;
-}
+
 
 .intro {
   margin-bottom: 12px;
@@ -195,7 +200,7 @@ export default {
         margin-left: auto;
         margin-right: auto;
     }
-    .notification{
+    .Search{
       margin-left: 20px;
     }
   
@@ -204,9 +209,9 @@ export default {
 </style>
 <style>
 
-.custom-notifi{
-  border: 2px solid #4a33d9 !important; 
-  border-radius: 30px !important;
-  top: 5px !important;       
+.custommap {
+  border: 2px solid #4a33d9 !important; /* màu hồng đậm */
+  border-radius: 30px !important;  
+  top:3px !important;
 }
 </style>

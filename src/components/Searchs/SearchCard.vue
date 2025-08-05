@@ -1,39 +1,46 @@
 <template>
   <el-dialog
-  v-model="visible"
+  v-model="visiblesearch"
   :width="dialogWidth"
   center
   destroy-on-close
   @close="handleClose"
-  class="custom-dialog custom-notifi"
+  class="custom-dialog custom-search"
   >
   <template #header>
     <div class="titlecard-container">
      
       <div class="titlecard">
-        <div class="notification" data-aos="fade-left" data-aos-duration="20000">
-          <i class="fa-solid fa-bell" @click="showDialog = true"></i>
+        <div class="Search" data-aos="fade-left" data-aos-duration="20000">
+           <i class="fa-solid fa-magnifying-glass" @click="showDialog_Search = true"></i>
         </div>
         <h4 class="title" data-aos="fade-left" data-aos-duration="20000">
-          Thông báo
+          Tìm kiếm
         </h4>
       </div>
     </div>
   </template>
 
-  
-    <div class="dialog-content" data-aos="fade-left" data-aos-duration="20000">
-      <p class="intro">Bạn có 3 thông báo mới:</p>
-      <ul class="noti-list">
-        <li>Lịch học mới đã được cập nhật</li>
-        <li>Bạn nhận được tin nhắn từ giáo viên</li>
-        <li>Đừng quên làm bài tập hôm nay</li>
-      </ul>
+  <div class="search-wrap">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="input-group">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" data-aos="fade-left" data-aos-duration="20000"> 
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </span>
+            <input data-aos="fade-left" data-aos-duration="20000" type="text" class="form-control button-form-control" placeholder="Nhập từ khóa bạn muốn tìm...">
+            </div>
+        </div>
     </div>
+  </div>
+
+  
 
     <template #footer>
         <div class="close-icon">
-          <i class="fa-solid fa-circle-xmark" @click="visible = false"></i>
+          <i class="fa-solid fa-circle-xmark" @click="visiblesearch = false"></i>
         </div>
     </template>
 
@@ -42,7 +49,7 @@
 
 <script>
 export default {
-  name: 'NotificationDialogCard',
+  name: 'SearchCard',
   props: {
     modelValue: {
       type: Boolean,
@@ -51,7 +58,7 @@ export default {
   },
   data() {
     return {
-      visible: this.modelValue,
+      visiblesearch: this.modelValue,
       screenWidth: window.innerWidth
     }
   },
@@ -60,7 +67,7 @@ export default {
     },
   computed: {
     dialogWidth() {
-        return this.screenWidth <= 768 ? '95%' : '800px';
+        return this.screenWidth <= 768 ? '95%' : '1000px';
     }
  },
  beforeUnmount() {
@@ -68,7 +75,7 @@ export default {
 },
   watch: {
     modelValue(val) {
-      this.visible = val
+      this.visiblesearch = val
     },
     visible(val) {
       this.$emit('update:modelValue', val)
@@ -79,10 +86,10 @@ export default {
      handleResize() {
     this.screenWidth = window.innerWidth;
   },
-  handleClose() {
-    this.visible = false;
-    this.$emit('update:modelValue', false);
-  }
+    handleClose() {
+        this.visiblesearch = false;
+        this.$emit('update:modelValue', false);
+    }
   }
 }
 </script>
@@ -99,7 +106,22 @@ export default {
     position: relative;
     width: 100%;
   }
-
+  .btn .fa-solid{
+    color: #dd0182;
+  }
+  .btn{
+    border-top: 1px solid  rgb(224, 219, 219);
+    border-left: 1px solid rgb(224, 219, 219);
+    border-bottom:  1px solid rgb(224, 219, 219);
+  }
+  
+  .btn:active{
+    background-color: #dd0182;
+    
+  }
+ .btn .fa-solid:active{
+    color: white;
+  }
   .close-icon {
     position: absolute;
     top: 10px;
@@ -110,7 +132,7 @@ export default {
   }
 
 
- .notification {
+ .Search {
     font-size: 23px;
     margin-right: 15px;
     color: #dd0182;
@@ -118,6 +140,10 @@ export default {
 
 
 }
+.input-group{
+  width: 950px;
+}
+
 .fa-circle-xmark {
     font-size: 25px;
     margin-right: 15px;
@@ -150,11 +176,7 @@ export default {
     color: #dd0182;
     border: 1px solid #dd0182;
 }
-.dialog-content {
-  padding: 10px 20px;
-  font-size: 18px;
-  color: #333;
-}
+
 
 .intro {
   margin-bottom: 12px;
@@ -195,8 +217,11 @@ export default {
         margin-left: auto;
         margin-right: auto;
     }
-    .notification{
+    .Search{
       margin-left: 20px;
+    }
+    .input-group{
+      width: 100%;
     }
   
    
@@ -204,9 +229,9 @@ export default {
 </style>
 <style>
 
-.custom-notifi{
+.custom-search {
   border: 2px solid #4a33d9 !important; 
-  border-radius: 30px !important;
-  top: 5px !important;       
+  border-radius: 30px !important;  
+  top: 25% !important;    
 }
 </style>

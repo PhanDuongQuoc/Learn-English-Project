@@ -6,11 +6,11 @@
         </div>
 
        <div class="button-header" data-aos="fade-left" data-aos-duration="4000">
-        <div class="message">
-            <i class="fa-solid fa-message"></i>
+        <div class="search">
+            <i class="fa-solid fa-magnifying-glass" @click="showDialog_Search = true"></i>
         </div>
-        <div class="eath">
-            <i class="fa-solid fa-earth-americas"></i>
+        <div class="location">
+            <i class="fa-solid fa-location-dot" @click="showDialog_Map = true"></i>
         </div>
         <div class="notification">
             <i class="fa-solid fa-bell" @click="showDialog = true"> </i>
@@ -33,7 +33,9 @@
        </div>
       
     </div>
-    <NotificationCard v-model="showDialog" />
+    <NotificationCard v-model="showDialog" data-aos="zoom-in" data-aos-duration="10000" />
+    <SearchCard v-model="showDialog_Search" data-aos="zoom-in" data-aos-duration="10000"/>
+    <MapCard v-model="showDialog_Map" data-aos="zoom-in" data-aos-duration="10000"></MapCard>
     <nav class="navbar navbar-expand-lg main-header" :class="{ show: isMenuOpen_2 }">
         <div class="container" data-aos="fade-left" data-aos-duration="4000">
             <a class="logo" href="#">
@@ -69,13 +71,13 @@
                     <li class="nav-item">
                         <a class="nav-link" @click="toggleMenu" href="#">Video</a>
                     </li>
-                    <li class="nav-item">
-                        <button class="btn cta-button" @click="toggleMenu">
+                    <li class="nav-item" @click="showDialog_Login = true">
+                        <button class="btn cta-button" >
                             <i class="fas fa-sign-in-alt me-2"></i>
                             Đăng nhập
                         </button>
                     </li>
-                    <li class="nav-item" @click="toggleMenu">
+                    <li class="nav-item" @click="showDialog_Register = true">
                         <button class="btn cta-button">
                             <i class="fas fa-user-plus me-2"></i>
                             Đăng ký ngay
@@ -86,20 +88,34 @@
         </div>
     </nav>
   </header>
+    <RegisterDialog v-model="showDialog_Register" @open-loginapp="openLoginDialog" data-aos="zoom-in" data-aos-duration="10000"></RegisterDialog>
+    <LoginDialog v-model="showDialog_Login"  @open-register="openRegisterDialog" data-aos="zoom-in" data-aos-duration="10000"></LoginDialog>
 </template>
 
 
 <script>
 import Cascader from '@/components/Cascaders/Cascader.vue';
 import NotificationCard from '@/components/Notifications/NotificationCard.vue';
+import SearchCard from '@/components/Searchs/SearchCard.vue';
+import MapCard from '@/components/Maps/MapCard.vue';
+import RegisterDialog from '@/components/AuthDialog/RegisterDialog.vue';
+import LoginDialog from '@/components/AuthDialog/LoginDialog.vue';
 export default{
     name:'AppHeater',
     components:{
         Cascader,
-        NotificationCard
+        NotificationCard,
+        SearchCard,
+        MapCard,
+        RegisterDialog,
+        LoginDialog
     },
     data(){
         return{
+            showDialog_Login:false,
+            showDialog_Register:false,
+            showDialog_Map:false,
+            showDialog_Search:false,
             showDialog: false,
             isMenuOpen: false,
             isMenuOpen_2:false,
@@ -137,6 +153,12 @@ export default{
         toggleMenu() {
             this.isMenuOpen = !this.isMenuOpen;
             this.isMenuOpen_2 = !this.isMenuOpen_2; 
+        },
+         openRegisterDialog() {
+            this.showDialog_Register = true
+        },
+        openLoginDialog(){
+            this.showDialog_Login = true
         }
     }
 }
@@ -162,7 +184,7 @@ export default{
             display: flex;
             
         }
-        .notification , .eath , .message{
+        .notification , .location , .search{
             font-size: 23px;
             margin-right: 15px;
             color: white;

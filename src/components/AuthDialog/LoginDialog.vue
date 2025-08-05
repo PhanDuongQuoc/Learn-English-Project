@@ -1,39 +1,19 @@
 <template>
   <el-dialog
-  v-model="visible"
+  v-model="visiblelogindialog"
   :width="dialogWidth"
   center
   destroy-on-close
   @close="handleClose"
-  class="custom-dialog custom-notifi"
-  >
-  <template #header>
-    <div class="titlecard-container">
-     
-      <div class="titlecard">
-        <div class="notification" data-aos="fade-left" data-aos-duration="20000">
-          <i class="fa-solid fa-bell" @click="showDialog = true"></i>
-        </div>
-        <h4 class="title" data-aos="fade-left" data-aos-duration="20000">
-          Thông báo
-        </h4>
-      </div>
-    </div>
-  </template>
-
+  class="custom-dialog customlogin"
   
-    <div class="dialog-content" data-aos="fade-left" data-aos-duration="20000">
-      <p class="intro">Bạn có 3 thông báo mới:</p>
-      <ul class="noti-list">
-        <li>Lịch học mới đã được cập nhật</li>
-        <li>Bạn nhận được tin nhắn từ giáo viên</li>
-        <li>Đừng quên làm bài tập hôm nay</li>
-      </ul>
-    </div>
+  >
 
+    
+    <AppLogin  @open-register="handleOpenRegister"/>
     <template #footer>
         <div class="close-icon">
-          <i class="fa-solid fa-circle-xmark" @click="visible = false"></i>
+          <i class="fa-solid fa-circle-xmark" @click="visiblelogindialog = false"></i>
         </div>
     </template>
 
@@ -41,8 +21,13 @@
 </template>
 
 <script>
+import AppLogin from '@/share/Auth/Login.vue';
 export default {
-  name: 'NotificationDialogCard',
+  name: 'LoginDialog',
+  components:{
+    AppLogin,
+    
+  },
   props: {
     modelValue: {
       type: Boolean,
@@ -51,7 +36,7 @@ export default {
   },
   data() {
     return {
-      visible: this.modelValue,
+      visiblelogindialog: this.modelValue,
       screenWidth: window.innerWidth
     }
   },
@@ -60,7 +45,7 @@ export default {
     },
   computed: {
     dialogWidth() {
-        return this.screenWidth <= 768 ? '95%' : '800px';
+        return this.screenWidth <= 768 ? '95%' : '450px';
     }
  },
  beforeUnmount() {
@@ -68,7 +53,7 @@ export default {
 },
   watch: {
     modelValue(val) {
-      this.visible = val
+      this.visiblelogindialog = val
     },
     visible(val) {
       this.$emit('update:modelValue', val)
@@ -76,30 +61,41 @@ export default {
   },
   methods: {
 
-     handleResize() {
-    this.screenWidth = window.innerWidth;
-  },
-  handleClose() {
-    this.visible = false;
-    this.$emit('update:modelValue', false);
-  }
+    handleResize() {
+        this.screenWidth = window.innerWidth;
+    },
+    handleClose() {
+        this.visiblelogindialog = false;
+        this.$emit('update:modelValue', false);
+    },
+    handleOpenRegister() {
+        this.visiblelogindialog = false
+        this.$emit('update:modelValue', false) 
+        this.$emit('open-register')          
+    }
   }
 }
 </script>
 
 <style scoped>
 
-.button-notifi{
-    background-color: #dd0182;
-    border: 1px solid #dd0182;
+    .button-notifi{
+        background-color: #dd0182;
+        border: 1px solid #dd0182;
+        
+    }
+
+    .iframe-map{
     
-}
+        border: 1px solid #dd0182;
+        border-radius: 25px;
+    }
 
   .titlecard-container {
     position: relative;
     width: 100%;
   }
-
+ 
   .close-icon {
     position: absolute;
     top: 10px;
@@ -110,14 +106,7 @@ export default {
   }
 
 
- .notification {
-    font-size: 23px;
-    margin-right: 15px;
-    color: #dd0182;
-    margin-top: 3px;
 
-
-}
 .fa-circle-xmark {
     font-size: 25px;
     margin-right: 15px;
@@ -150,11 +139,7 @@ export default {
     color: #dd0182;
     border: 1px solid #dd0182;
 }
-.dialog-content {
-  padding: 10px 20px;
-  font-size: 18px;
-  color: #333;
-}
+
 
 .intro {
   margin-bottom: 12px;
@@ -195,18 +180,28 @@ export default {
         margin-left: auto;
         margin-right: auto;
     }
-    .notification{
-      margin-left: 20px;
-    }
-  
+
    
   }
+  
 </style>
 <style>
 
-.custom-notifi{
+
+.customlogin {
   border: 2px solid #4a33d9 !important; 
-  border-radius: 30px !important;
-  top: 5px !important;       
+  border-radius: 30px !important;  
+  height: 550px;  
+  top: 5%;
+ 
+ 
+  
 }
+@media (max-width:768px) {
+    .customlogin{
+        top: 14% !important;
+    }
+}
+
+
 </style>
