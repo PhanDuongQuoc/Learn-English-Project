@@ -31,7 +31,7 @@
                             <div class="form-check" data-aos="fade-left" data-aos-duration="20000">
                                 <input class="form-check-input" type="checkbox" value="" name="iAgree" id="iAgree" required>
                                 <label class="form-check-label text-secondary" for="iAgree">
-                                Tôi đồng ý với - <a href="#!" class="link-primary text-decoration-none link">điều khoản và điều kiện</a>
+                                Tôi đồng ý với - <a href="#!" class="link-primary text-decoration-none link" @click="openClause">điều khoản và điều kiện</a>
                                 </label>
                             </div>
                         </div>
@@ -43,11 +43,13 @@
                     </div>
                     </form>
                     <div class="row">
-                    <div class="col-12" data-aos="fade-left" data-aos-duration="20000">
-                        <hr class="border-secondary-subtle">
-                        <p class="m-0 text-secondary text-center">Bạn đã có tài khoản chưa?
-                            <a href="#!" class="link-primary text-decoration-none link" @click="openRegister">Đăng ký</a></p>
-                    </div>
+                        <div class="col-12" data-aos="fade-left" data-aos-duration="20000">
+                            <hr class="border-secondary-subtle">
+                            <p class="m-0 text-secondary text-center">Bạn đã có tài khoản chưa?
+                                <a href="#!" class="link-primary text-decoration-none link" @click="openRegister">Đăng ký</a> hoặc
+                                <a href="#!" class="link-primary text-decoration-none link" @click="openReset">Quên mật khẩu</a>
+                            </p>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-12 mt-3">
@@ -101,6 +103,13 @@ export default{
         openRegister() {
             this.$emit('open-register')
        
+        },
+        openReset(){
+            this.$emit('open-reset')
+        },
+        openClause(){
+             this.$emit('open-clause')
+
         }
     }
 }

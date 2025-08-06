@@ -43,7 +43,7 @@
                         <div class="form-check" data-aos="fade-left" data-aos-duration="20000">
                             <input class="form-check-input" type="checkbox" value="" name="iAgree" id="iAgree" required>
                             <label class="form-check-label text-secondary" for="iAgree">
-                            Tôi đồng ý với - <a href="#!" class="link-primary text-decoration-none link">điều khoản và điều kiện</a>
+                            Tôi đồng ý với - <a href="#!" class="link-primary text-decoration-none link" @click="openClause">điều khoản và điều kiện</a>
                             </label>
                         </div>
                         </div>
@@ -105,6 +105,10 @@ export default{
         openLogin() {
             this.$emit('open-login')
        
+        },
+         openClause(){
+             this.$emit('open-clause')
+
         }
     }
     

@@ -71,25 +71,53 @@
                     <li class="nav-item">
                         <a class="nav-link" @click="toggleMenu" href="#">Video</a>
                     </li>
-                    <li class="nav-item" @click="showDialog_Login = true">
+                    <li class="nav-item" @click="showDialog_Login = true" v-if="showLogin_Register('Login')">
                         <button class="btn cta-button" >
                             <i class="fas fa-sign-in-alt me-2"></i>
                             Đăng nhập
                         </button>
                     </li>
-                    <li class="nav-item" @click="showDialog_Register = true">
+                    <li class="nav-item" @click="showDialog_Register = true" v-if="showLogin_Register('Register')">
                         <button class="btn cta-button">
                             <i class="fas fa-user-plus me-2"></i>
                             Đăng ký ngay
                         </button>
+                    </li>
+                    <!--Logout-->
+                     <!-- <li class="nav-item" v-if="!showLogin_Register('Logout')">
+                        <button class="btn cta-button" >
+                            <i class="fas fa-sign-in-alt me-2"></i>
+                        </button>
+                    </li> -->
+                    <li class="nav-item" v-if="!showLogin_Register('Setting')">
+                         <div class="search setting">
+                            <i class="fa-solid fa-gear"></i>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <div class="location logout-item">
+                            <i class="fas fa-sign-in-alt me-2" v-if="!showLogin_Register('Logout')"></i>
+                        </div>
+                    </li>
+                    <li class="nav-item" v-if="!showLogin_Register('represent')">
+                        <a class="logo-replace" href="#">
+                            <div class="logo-img-replace">
+                                <img class="logo-main-replace" :class="{ show: isMenuOpen_2 }" src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_hybrid&w=740&q=80" alt="">
+                            </div>
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
   </header>
-    <RegisterDialog v-model="showDialog_Register" @open-loginapp="openLoginDialog" data-aos="zoom-in" data-aos-duration="10000"></RegisterDialog>
-    <LoginDialog v-model="showDialog_Login"  @open-register="openRegisterDialog" data-aos="zoom-in" data-aos-duration="10000"></LoginDialog>
+    <RegisterDialog v-model="showDialog_Register" @open-loginapp="openLoginDialog" @open-clause="openResetClause"  data-aos="zoom-in" data-aos-duration="10000"></RegisterDialog>
+    <LoginDialog v-model="showDialog_Login"  @open-register="openRegisterDialog" @open-reset="openResetPasswordDialog" @open-clause="openResetClause" 
+         data-aos="zoom-in" data-aos-duration="10000">
+    </LoginDialog>
+    <ResetPasswordDialog v-model="showDialog_ResetPassword" @open-register="openRegisterDialog" data-aos="zoom-in" data-aos-duration="10000"></ResetPasswordDialog>
+    <ClauseCard v-model = "showDialog_Clause" @close-clause="closeResetClause"></ClauseCard>
 </template>
 
 
@@ -100,6 +128,8 @@ import SearchCard from '@/components/Searchs/SearchCard.vue';
 import MapCard from '@/components/Maps/MapCard.vue';
 import RegisterDialog from '@/components/AuthDialog/RegisterDialog.vue';
 import LoginDialog from '@/components/AuthDialog/LoginDialog.vue';
+import ResetPasswordDialog from '@/components/AuthDialog/ResetPasswordDialog.vue';
+import ClauseCard from '@/components/AuthDialog/ClauseCard.vue';
 export default{
     name:'AppHeater',
     components:{
@@ -108,10 +138,19 @@ export default{
         SearchCard,
         MapCard,
         RegisterDialog,
-        LoginDialog
+        LoginDialog,
+        ResetPasswordDialog,
+        ClauseCard
     },
     data(){
         return{
+            showbutton_Setting:false,
+            showbutton_Represent:false,
+            showbutton_Login:false,
+            showbutton_Register:false,
+            showbutton_Logout:false,
+            showDialog_Clause:false,
+            showDialog_ResetPassword:false,
             showDialog_Login:false,
             showDialog_Register:false,
             showDialog_Map:false,
@@ -150,6 +189,7 @@ export default{
         
     },
     methods: {
+     
         toggleMenu() {
             this.isMenuOpen = !this.isMenuOpen;
             this.isMenuOpen_2 = !this.isMenuOpen_2; 
@@ -159,23 +199,67 @@ export default{
         },
         openLoginDialog(){
             this.showDialog_Login = true
+        },
+        openResetPasswordDialog(){
+            this.showDialog_ResetPassword = true;
+        },
+         openResetClause(){
+            this.showDialog_Clause = true;
+        },
+        closeResetClause(){
+            this.showDialog_Login=true;
+        },
+
+        showLogin_Register(val){
+            if(val ==='Login'){
+                this.showbutton_Login = true;
+            }
+            if(val==='Register'){
+                this.showbutton_Register = true;
+            }
+            if(val==='Logout'){
+                this.showbutton_Logout = true
+            }
+            if(val==='Setting'){
+                this.showbutton_Setting = true
+            }
+            if(val==='represent'){
+                this.showbutton_Represent = true
+            }
         }
+
+       
+      
+      
     }
 }
 </script>
 
 <style scoped>
-    .header{
-        z-index: 999;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-    }
+        .header{
+            z-index: 999;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
 
+        .logo-main-replace{
+            width: 40px;
+            height: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 3px solid #4a33d9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    
-  .top-banner {
+        }
+
+        .fa-sign-in-alt:hover{
+            color: #4a33d9;
+        }
+        .top-banner {
             background: #4a33d9 ;
             color: white;
             padding: 12px 0;
@@ -190,7 +274,7 @@ export default{
             color: white;
     
         }
-        .fa-solid{
+         .fa-solid{
              box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 
         }
@@ -217,6 +301,7 @@ export default{
             padding: 15px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
+        
         
         .logo {
             display: flex;
@@ -270,6 +355,9 @@ export default{
         .navbar-nav .nav-link:hover::after {
             width: 100%;
             left: 0;
+        }
+        .nav-item .fa-solid:hover{
+            color: #4a33d9 !important;
         }
 
         
@@ -419,6 +507,16 @@ export default{
             .logo-text{
                 font-size: 20px;
               
+            }
+            .fa-gear, .fa-sign-in-alt{
+                color: #dd0182;
+                
+            }
+            .logout-item{
+                margin-left: 15px;
+            }
+            .setting{
+                margin-left: 10px;
             }
          
         }

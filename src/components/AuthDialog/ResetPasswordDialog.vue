@@ -1,19 +1,19 @@
 <template>
   <el-dialog
-  v-model="visibleregisterdialog"
+  v-model="visibleresetpassworddialog"
   :width="dialogWidth"
   center
   destroy-on-close
   @close="handleClose"
-  class="custom-dialog custom"
+  class="custom-dialog customreset"
   
   >
 
     
-<AppRegister @open-login="handleOpenLogin" @open-clause="handleOpenClause"/>
+    <ResetPassword  @open-register="handleOpenRegister"/>
     <template #footer>
         <div class="close-icon">
-          <i class="fa-solid fa-circle-xmark" @click="visibleregisterdialog = false"></i>
+          <i class="fa-solid fa-circle-xmark" @click="visibleresetpassworddialog = false"></i>
         </div>
     </template>
 
@@ -21,11 +21,12 @@
 </template>
 
 <script>
-import AppRegister from '@/share/Auth/Register.vue';
+import ResetPassword from '@/share/Auth/ResetPassword.vue';
 export default {
-  name: 'RegisterDialog',
+  name: 'ResetPasswordDialog',
   components:{
-    AppRegister
+    ResetPassword,
+    
   },
   props: {
     modelValue: {
@@ -35,7 +36,7 @@ export default {
   },
   data() {
     return {
-      visibleregisterdialog: this.modelValue,
+      visibleresetpassworddialog: this.modelValue,
       screenWidth: window.innerWidth
     }
   },
@@ -52,7 +53,7 @@ export default {
 },
   watch: {
     modelValue(val) {
-      this.visibleregisterdialog = val
+      this.visibleresetpassworddialog = val
     },
     visible(val) {
       this.$emit('update:modelValue', val)
@@ -60,23 +61,18 @@ export default {
   },
   methods: {
 
-     handleResize() {
-    this.screenWidth = window.innerWidth;
-  },
-  handleClose() {
-    this.visibleregisterdialog = false;
-    this.$emit('update:modelValue', false);
-  },
-      handleOpenLogin() {
-        this.visibleregisterdialog = false
-        this.$emit('update:modelValue', false) 
-        this.$emit('open-loginapp')          
+    handleResize() {
+        this.screenWidth = window.innerWidth;
     },
-    handleOpenClause(){
-       this.visibleregisterdialog = false
-        this.$emit('update:modelValue', false) 
-        this.$emit('open-clause')  
+    handleClose() {
+        this.visibleresetpassworddialog = false;
+        this.$emit('update:modelValue', false);
     },
+    handleOpenRegister() {
+        this.visibleresetpassworddialog = false
+        this.$emit('update:modelValue', false) 
+        this.$emit('open-register')          
+    }
   }
 }
 </script>
@@ -192,14 +188,19 @@ export default {
 <style>
 
 
-.custom {
+.customreset {
   border: 2px solid #4a33d9 !important; 
   border-radius: 30px !important;  
-  height: 700px;  
-
+  height: 425px;  
+  top: 5%;
  
  
   
+}
+@media (max-width:768px) {
+    .customreset{
+        top: 20% !important;
+    }
 }
 
 

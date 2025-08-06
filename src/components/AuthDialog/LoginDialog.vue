@@ -10,7 +10,12 @@
   >
 
     
-    <AppLogin  @open-register="handleOpenRegister"/>
+    <AppLogin  
+      @open-register="handleOpenRegister"
+      @open-reset="handleOpenReset" 
+      @open-clause="handleOpenClause"
+      @close-clause="handleCloseClause"
+    />
     <template #footer>
         <div class="close-icon">
           <i class="fa-solid fa-circle-xmark" @click="visiblelogindialog = false"></i>
@@ -72,6 +77,21 @@ export default {
         this.visiblelogindialog = false
         this.$emit('update:modelValue', false) 
         this.$emit('open-register')          
+    },
+    handleOpenReset(){
+       this.visiblelogindialog = false
+        this.$emit('update:modelValue', false) 
+        this.$emit('open-reset')  
+    },
+    handleOpenClause(){
+       this.visiblelogindialog = false
+        this.$emit('update:modelValue', false) 
+        this.$emit('open-clause')  
+    },
+    handleCloseClause(){
+       this.visiblelogindialog = true
+        this.$emit('update:modelValue', true) 
+        this.$emit('close-clause')  
     }
   }
 }
@@ -199,7 +219,7 @@ export default {
 }
 @media (max-width:768px) {
     .customlogin{
-        top: 14% !important;
+        top: 20% !important;
     }
 }
 
