@@ -20,13 +20,13 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&display=swap');
 html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
 #app {
-  font-family: "Outfit", sans-serif;
+  font-family: "Mozilla Text", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -50,7 +50,7 @@ html, body {
  @media (max-width:768px){
    
   .el-overlay-dialog {
-     top: 0 !important;
+     top: 0 ;
    
   }
   .el-dialog{

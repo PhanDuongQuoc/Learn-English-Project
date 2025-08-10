@@ -41,6 +41,10 @@ export default {
       type:String,
       default:'150px'
     },
+    styleHeightDropdown:{
+      type:String,
+      default:'300px'
+    }
 
   },
   computed: {
@@ -49,7 +53,7 @@ export default {
         '--bg-color': this.bgColor,
         '--text-color': this.textColor,
         '--style-width': this.styleWidth,
-       
+        '--style-height-dropdown':this.styleHeightDropdown,
     
       }
     }
@@ -88,6 +92,10 @@ export default {
   margin-top: 0px;
   border: 1px solid white;
   
+}
+
+.el-cascader-menu__wrap.el-scrollbar__wrap{
+  height:210px !important;
 }
 
 

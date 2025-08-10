@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <div class="top-banner flex-column flex-md-row align-items-center gap-1 mt-8 mt-md-0" :class="{ show: isMenuOpen_2 }">
+    <div class="top-banner flex-column flex-md-row align-items-center gap-1 mt-8 mt-md-0" :class="[{ show: isMenuOpen_2 }, { hidden: isBannerHidden }]">
         <div class="container" data-aos="fade-left" data-aos-duration="4000">
             <p class="text-title">HỌC TIẾNG ANH GIAO TIẾP CÙNG GIÁO VIÊN IELTS 8.0+, GIÁO VIÊN BẢN XỨ & PHƯƠNG PHÁP SHADOWING</p>
         </div>
@@ -49,7 +49,7 @@
                 <span class="navbar-toggler-icon" :class="{ show: isMenuOpen_2 }"></span>
             </button>
 
-            <div class="collapse navbar-collapse" :class="{ show: isMenuOpen }" id="navbarNav">
+            <div class="collapse navbar-collapse navbar-collapse-1" :class="{ show: isMenuOpen }" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center d-flex flex-column flex-md-row align-items-center gap-2 mt-3 mt-md-0">
                     <li class="nav-item">
                         <a class="nav-link" @click="toggleMenu" href="#">Trang chủ</a>
@@ -61,55 +61,58 @@
                         <a class="nav-link" @click="toggleMenu" href="#">Từ vựng</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" @click="toggleMenu" href="#">
-                            Phương pháp học
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" @click="toggleMenu" href="#">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" @click="toggleMenu" href="#">Video</a>
                     </li>
+
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse navbar-collapse-2" :class="{ show: isMenuOpen }" >
+                <ul class="navbar-nav ms-auto align-items-center d-flex flex-column flex-md-row align-items-center gap-2 mt-3 mt-md-0">
                     <li class="nav-item" @click="showDialog_Login = true" v-if="showLogin_Register('Login')">
-                        <button class="btn cta-button" >
-                            <i class="fas fa-sign-in-alt me-2"></i>
-                            Đăng nhập
-                        </button>
-                    </li>
-                    <li class="nav-item" @click="showDialog_Register = true" v-if="showLogin_Register('Register')">
-                        <button class="btn cta-button">
-                            <i class="fas fa-user-plus me-2"></i>
-                            Đăng ký ngay
-                        </button>
-                    </li>
-                    <!--Logout-->
-                     <!-- <li class="nav-item" v-if="!showLogin_Register('Logout')">
-                        <button class="btn cta-button" >
-                            <i class="fas fa-sign-in-alt me-2"></i>
-                        </button>
-                    </li> -->
-                    <li class="nav-item" v-if="!showLogin_Register('Setting')">
-                         <div class="search setting">
-                            <i class="fa-solid fa-gear"></i>
-                        </div>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <div class="location logout-item">
-                            <i class="fas fa-sign-in-alt me-2" v-if="!showLogin_Register('Logout')"></i>
-                        </div>
-                    </li>
-                    <li class="nav-item" v-if="!showLogin_Register('represent')">
-                        <a class="logo-replace" href="#">
-                            <div class="logo-img-replace">
-                                <img class="logo-main-replace" :class="{ show: isMenuOpen_2 }" src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_hybrid&w=740&q=80" alt="">
+                            <button class="btn cta-button cta-button-1" >
+                                <i class="fas fa-sign-in-alt fa-sign-in-alt-1 me-2"></i>
+                                Đăng nhập
+                            </button>
+                        </li>
+                        <li class="nav-item" @click="showDialog_Register = true" v-if="showLogin_Register('Register')">
+                            <button class="btn cta-button">
+                                <i class="fas fa-user-plus me-2"></i>
+                                Đăng ký ngay
+                            </button>
+                        </li>
+                        <!--Logout-->
+                        <!-- <li class="nav-item" v-if="!showLogin_Register('Logout')">
+                            <button class="btn cta-button" >
+                                <i class="fas fa-sign-in-alt me-2"></i>
+                            </button>
+                        </li> -->
+                        <li class="nav-item"  @click="showDialog_Setting = true" v-if="!showLogin_Register('Setting')">
+                            <div class="search setting">
+                                <i class="fa-solid fa-gear"></i>
                             </div>
-                        </a>
-                    </li>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <div class="location logout-item">
+                                <i class="fas fa-sign-in-alt me-2" v-if="!showLogin_Register('Logout')"></i>
+                            </div>
+                        </li>
+                        <li class="nav-item arrow-logo" v-if="!showLogin_Register('represent')">
+                            <a class="logo-replace" href="#">
+                                <div class="logo-img-replace">
+                                    <img class="logo-main-replace" :class="{ show: isMenuOpen_2 }" src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_hybrid&w=740&q=80" alt="">
+                                </div>
+                            
+                            </a>
+                            <i class="fa-solid arrow-icon fa-chevron-down"></i>
+                        </li>
                 </ul>
             </div>
         </div>
+  
     </nav>
   </header>
     <RegisterDialog v-model="showDialog_Register" @open-loginapp="openLoginDialog" @open-clause="openResetClause"  data-aos="zoom-in" data-aos-duration="10000"></RegisterDialog>
@@ -118,6 +121,7 @@
     </LoginDialog>
     <ResetPasswordDialog v-model="showDialog_ResetPassword" @open-register="openRegisterDialog" data-aos="zoom-in" data-aos-duration="10000"></ResetPasswordDialog>
     <ClauseCard v-model = "showDialog_Clause" @close-clause="closeResetClause"></ClauseCard>
+    <SettingCard v-model="showDialog_Setting"></SettingCard>
 </template>
 
 
@@ -130,6 +134,7 @@ import RegisterDialog from '@/components/AuthDialog/RegisterDialog.vue';
 import LoginDialog from '@/components/AuthDialog/LoginDialog.vue';
 import ResetPasswordDialog from '@/components/AuthDialog/ResetPasswordDialog.vue';
 import ClauseCard from '@/components/AuthDialog/ClauseCard.vue';
+import SettingCard from '@/components/Settings/SettingCard.vue';
 export default{
     name:'AppHeater',
     components:{
@@ -140,10 +145,13 @@ export default{
         RegisterDialog,
         LoginDialog,
         ResetPasswordDialog,
-        ClauseCard
+        ClauseCard,
+        SettingCard
     },
     data(){
         return{
+            isBannerHidden: false,
+            showDialog_Setting:false,
             showbutton_Setting:false,
             showbutton_Represent:false,
             showbutton_Login:false,
@@ -188,8 +196,32 @@ export default{
         }
         
     },
+    mounted() {
+        window.addEventListener('scroll', this.handleScroll);
+        },
+        beforeUnmount() {
+         window.removeEventListener('scroll', this.handleScroll);
+        },
     methods: {
-     
+        handleScroll() {
+            const currentScroll = window.scrollY;
+            const mainHeader = document.querySelector('.main-header');
+
+            if (currentScroll > this.lastScrollY && currentScroll > 100) {
+                this.isBannerHidden = true;
+                if (mainHeader) {
+                    mainHeader.classList.add('move-up');
+                }
+            } else {
+                this.isBannerHidden = false;
+                if (mainHeader) {
+                    mainHeader.classList.remove('move-up');
+                }
+            }
+
+            this.lastScrollY = currentScroll;
+        },
+                    
         toggleMenu() {
             this.isMenuOpen = !this.isMenuOpen;
             this.isMenuOpen_2 = !this.isMenuOpen_2; 
@@ -245,28 +277,45 @@ export default{
         }
 
         .logo-main-replace{
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             border: 3px solid #4a33d9;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+           
 
+        }
+
+        .arrow-logo:hover{
+            opacity: 0.7;
+        }
+        .arrow-logo{
+            display: flex;
+            background-color: #4a33d9;
+            width: 70px;
+            border-radius: 10px;
+            padding: 2px 5px;
+            /* border: 2px solid rgb(212, 201, 201); */
         }
 
         .fa-sign-in-alt:hover{
             color: #4a33d9;
         }
+      
         .top-banner {
-            background: #4a33d9 ;
+            background: #4a33d9;
             color: white;
             padding: 12px 0;
             font-size: 14px;
             text-align: center;
             display: flex;
-            
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            width: 100%;
+            z-index: 1001;
         }
         .notification , .location , .search{
             font-size: 23px;
@@ -279,10 +328,18 @@ export default{
 
         }
 
+       .arrow-icon{
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+            margin-top: 10px;
+            margin-left: 10px;
+            color: white;
+            font-size: 12px;
+            
+       }
       
 
         .fa-solid:hover{
-         color: #dd0182;
+            color: #dd0182;
         }
         .button-header{
             display: flex;
@@ -300,14 +357,29 @@ export default{
             background: #dd0182;
             padding: 15px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.3s ease-in-out;
+            top: 0;
+            margin-top: 60px;
         }
-        
-        
+
+        .header:has(.top-banner.hidden) .main-header {
+            transform: translateY(-60px);
+        }
+
+        .main-header.move-up {
+            transform: translateY(-56px);
+        }
+                
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
             color: white;
+            margin-left: 40px;
+        }
+        .arrow-logo{
+            margin-right: 10px;
         }
         
         .logo-img , .logo-main{
@@ -395,24 +467,39 @@ export default{
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
             background: white ;
-            color:#4a33d9 ;
+            color:#4a33d9;
         }
+
         
+       
         .navbar-toggler {
             border: 2px solid white;
             padding: 4px 8px;
         }
         
+        
         .navbar-toggler-icon {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
         
+        .top-banner {
+            transition: top 0.3s ease-in-out;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            }
+
+            .top-banner.hidden {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            
         @media (max-width: 991px) {
             .navbar-collapse {
                 background: rgba(0,0,0,0.1);
                 border-radius: 10px;
-                padding: 20px;
-                margin-top: 15px;
+                
             }
             
             .navbar-nav .nav-link {
@@ -424,6 +511,7 @@ export default{
             .navbar-nav .nav-link:hover {
                 background: rgba(255,255,255,0.1);
             }
+
          
         }
         @media (max-width:768px){
@@ -436,6 +524,16 @@ export default{
                 text-transform: uppercase;
                 transition: all 0.3s ease;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+             .arrow-icon{
+        
+                color: #4a33d9;
+            }
+            .logo{
+                margin-left: -8px;
+            }
+            .arrow-logo{
+                background-color: white;
             }
             .cta-button:hover {
                 transform: translateY(-2px);
@@ -452,7 +550,26 @@ export default{
             }
             .main-header.show{
                 background-color: white;
+                margin-top: 0;
             }
+             .main-header {
+                background: #dd0182;
+                padding: 15px 0;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                position: relative;
+                transition: all 0.3s ease-in-out;
+                top: 0;
+                margin-top: 95px;
+            }
+
+            .header:has(.top-banner.hidden) .main-header {
+                transform: translateY(-100px);
+            }
+
+            .main-header.move-up {
+                transform: translateY(-56px);
+            }
+             
             .navbar-toggler.show{
                 border: 1px solid white;
             }
@@ -498,7 +615,8 @@ export default{
             .navbar-collapse{
                 background-color: white;
             }
-           
+
+      
             .logo-main{
                 width: 50px;
                 height: 50px;
@@ -512,13 +630,26 @@ export default{
                 color: #dd0182;
                 
             }
+            .fa-sign-in-alt-1{
+                color: white;
+            }
+           
             .logout-item{
                 margin-left: 15px;
             }
             .setting{
                 margin-left: 10px;
             }
+            .arrow-logo{
+                border:1px solid white;
+                margin-left: 15px;
+            }
+
+       
+           
          
         }
+
+    
         
 </style>

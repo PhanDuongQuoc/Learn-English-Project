@@ -1,19 +1,36 @@
 <template>
   <el-dialog
-  v-model="visibleregisterdialog"
+  v-model="visible"
   :width="dialogWidth"
   center
   destroy-on-close
   @close="handleClose"
-  class="custom-dialog custom"
-  
+  class="custom-dialog custom-setting"
   >
+  <template #header>
+    <div class="titlecard-container">
+     
+      <div class="titlecard">
+        <div class="notification" data-aos="fade-left" data-aos-duration="20000">
+           <i class="fa-solid fa-gear"  @click="showDialog = true"></i>
+        </div>
+        <h4 class="title" data-aos="fade-left" data-aos-duration="20000">
+          Cài đặt
+        </h4>
+      </div>
+    </div>
+  </template>
 
-    
-<AppRegister @open-login="handleOpenLogin" @open-clause="handleOpenClause"/>
+  
+    <div class="dialog-content" data-aos="fade-left" data-aos-duration="20000">
+      <div clas="Content-setting">
+        <AppContentSetting/>
+      </div>
+    </div>
+
     <template #footer>
         <div class="close-icon">
-          <i class="fa-solid fa-circle-xmark" @click="visibleregisterdialog = false"></i>
+          <i class="fa-solid fa-circle-xmark" @click="visible = false"></i>
         </div>
     </template>
 
@@ -21,11 +38,11 @@
 </template>
 
 <script>
-import AppRegister from '@/share/Auth/Register.vue';
+import AppContentSetting from './ContentSetting.vue';
 export default {
-  name: 'RegisterDialog',
+  name: 'SettingCard',
   components:{
-    AppRegister
+    AppContentSetting
   },
   props: {
     modelValue: {
@@ -35,7 +52,7 @@ export default {
   },
   data() {
     return {
-      visibleregisterdialog: this.modelValue,
+      visible: this.modelValue,
       screenWidth: window.innerWidth
     }
   },
@@ -44,7 +61,7 @@ export default {
     },
   computed: {
     dialogWidth() {
-        return this.screenWidth <= 768 ? '95%' : '450px';
+        return this.screenWidth <= 768 ? '95%' : '800px';
     }
  },
  beforeUnmount() {
@@ -52,7 +69,7 @@ export default {
 },
   watch: {
     modelValue(val) {
-      this.visibleregisterdialog = val
+      this.visible = val
     },
     visible(val) {
       this.$emit('update:modelValue', val)
@@ -64,42 +81,26 @@ export default {
     this.screenWidth = window.innerWidth;
   },
   handleClose() {
-    this.visibleregisterdialog = false;
+    this.visible = false;
     this.$emit('update:modelValue', false);
-  },
-      handleOpenLogin() {
-        this.visibleregisterdialog = false
-        this.$emit('update:modelValue', false) 
-        this.$emit('open-loginapp')          
-    },
-    handleOpenClause(){
-       this.visibleregisterdialog = false
-        this.$emit('update:modelValue', false) 
-        this.$emit('open-clause')  
-    },
+  }
   }
 }
 </script>
 
 <style scoped>
 
-    .button-notifi{
-        background-color: #dd0182;
-        border: 1px solid #dd0182;
-        
-    }
-
-    .iframe-map{
+.button-notifi{
+    background-color: #dd0182;
+    border: 1px solid #dd0182;
     
-        border: 1px solid #dd0182;
-        border-radius: 25px;
-    }
+}
 
   .titlecard-container {
     position: relative;
     width: 100%;
   }
- 
+
   .close-icon {
     position: absolute;
     top: 10px;
@@ -110,7 +111,15 @@ export default {
   }
 
 
+ .notification {
+    font-size: 23px;
+    margin-left: 35px;
 
+    color: #dd0182;
+    margin-top: 3px;
+
+
+}
 .fa-circle-xmark {
     font-size: 25px;
     margin-right: 15px;
@@ -119,6 +128,7 @@ export default {
 }
 .fa-solid {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
     
 }
 .fa-circle-xmark:active{
@@ -137,13 +147,19 @@ export default {
     color: #dd0182;
     text-transform: uppercase;
     margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .button-notifi:hover{
     background-color: white;
     color: #dd0182;
     border: 1px solid #dd0182;
 }
-
+.dialog-content {
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #333;
+}
 
 .intro {
   margin-bottom: 12px;
@@ -184,25 +200,18 @@ export default {
         margin-left: auto;
         margin-right: auto;
     }
-
-
-  }
+    .notification{
+      margin-left: 20px;
+    }
   
+   
+  }
 </style>
 <style>
 
-
-.custom {
+.custom-setting{
   border: 2px solid #4a33d9 !important; 
-  border-radius: 30px !important;  
-  height: 700px; 
- 
-
- 
- 
-  
+  border-radius: 30px !important;
+  top: 5px !important;       
 }
-
-
-
 </style>
