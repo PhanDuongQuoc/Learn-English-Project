@@ -4,6 +4,7 @@
 
     <div v-if="isLoading" class="page-loader">
       <div class="spinner"></div>
+      <div>Loading...</div>
     </div>
 
     <router-view v-show="!isLoading" />
