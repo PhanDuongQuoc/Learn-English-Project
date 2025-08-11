@@ -4,7 +4,7 @@
 
     <div v-if="isLoading" class="page-loader">
       <div class="spinner"></div>
-      <div>Loading...</div>
+      <div class="loading">Loading...</div>
     </div>
 
     <router-view v-show="!isLoading" />
@@ -62,7 +62,10 @@ html, body {
   margin-bottom: auto !important;
   bottom: 30px !important;
 }
-
+.loading{
+  color: #4a33d9;
+  margin-left: 15px;
+}
 .page-loader {
   position: fixed;
   top: 0; left: 0;
@@ -70,6 +73,7 @@ html, body {
   background: rgba(255, 255, 255, 0.9);
   display: flex; align-items: center; justify-content: center;
   z-index: 9999;
+
 }
 
 .spinner {

@@ -52,10 +52,10 @@
             <div class="collapse navbar-collapse navbar-collapse-1" :class="{ show: isMenuOpen }" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center d-flex flex-column flex-md-row align-items-center gap-2 mt-3 mt-md-0">
                     <li class="nav-item">
-                        <RouterLink class="nav-link" to="/learn-english">Trang chủ</RouterLink>
+                        <RouterLink class="nav-link" @click="toggleMenu" to="/">Trang chủ</RouterLink>
                     </li>
                     <li class="nav-item">
-                        <RouterLink class="nav-link" to="/learn-english/gioi-thieu">Giới thiệu</RouterLink>
+                        <RouterLink class="nav-link" @click="toggleMenu" to="/learn-english/gioi-thieu">Giới thiệu</RouterLink>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" @click="toggleMenu" href="#">Từ vựng</a>
@@ -72,13 +72,13 @@
             <div class="collapse navbar-collapse navbar-collapse-2" :class="{ show: isMenuOpen }" >
                 <ul class="navbar-nav ms-auto align-items-center d-flex flex-column flex-md-row align-items-center gap-2 mt-3 mt-md-0">
                     <li class="nav-item" @click="showDialog_Login = true" v-if="!showLogin_Register('Login')">
-                            <button class="btn cta-button cta-button-1" >
+                            <button class="btn cta-button cta-button-1"  @click="toggleMenu" >
                                 <i class="fas fa-sign-in-alt fa-sign-in-alt-1 me-2"></i>
                                 Đăng nhập
                             </button>
                         </li>
                         <li class="nav-item" @click="showDialog_Register = true" v-if="!showLogin_Register('Register')">
-                            <button class="btn cta-button">
+                            <button class="btn cta-button"  @click="toggleMenu">
                                 <i class="fas fa-user-plus me-2"></i>
                                 Đăng ký ngay
                             </button>

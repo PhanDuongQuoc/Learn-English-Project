@@ -316,11 +316,13 @@ export default{
      /* Footer Styles */
         .footer{
                 margin-top: -17px;
+              
         }
         .bg-footer {
             background: linear-gradient(135deg, #4a33d9 0%, #4a33d9 100%);
             position: relative;
             overflow: hidden;
+           
         }
         
         .bg-footer::before {

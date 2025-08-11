@@ -6,7 +6,9 @@
         <div class="Content">
                 <div class="content-wrap">
                     <h3 class="title-small">
+                        <i class="fas fa-rocket icon-title"></i> 
                         {{ ContentBanner.title_small }}
+                        <i class="fas fa-chart-line icon-title"></i>
                     </h3>
                     <h2 class="title-large">
                         {{ContentBanner.title_large}}
@@ -14,10 +16,15 @@
                     <br>
                     <div class="button-click">
                         <button class="btn cta-button">
-                              
+                              <i class="fas fa-route"></i>
+                               Xem lộ trình
+                        </button>
+                        <button class="btn cta-button">
+                              <i class="fas fa-award"></i> 
                                Trải nghiệm ngay
                         </button>
                     </div>
+                    
                 </div>
                 
         </div>
@@ -68,20 +75,31 @@ export default{
         width: 100%;
         height: 100%;
         overflow: hidden;
+
         
+    }
+    .fa-chart-line{
+        margin-left: 10px;
     }
     .title-large {
         color: #dd0182;
-        font-size: 55px;
+        font-size: 60px;
         text-transform: uppercase;
         font-weight: bold;
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+      
+    }
+    .fas{
+        margin-right: 10px;
     }
     .title-small{
         color: white;
         text-transform: uppercase;
         font-weight: bold;
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+    }
+    .icon-title{
+        color:white;
     }
     .content{
         font-size: 20px;
@@ -95,13 +113,13 @@ export default{
     .cta-button {
             background: #dd0182;
             border: none;
-            border-radius: 25px;
-            padding: 15px;
+            border-radius: 10px;
+            margin-left: 5px;
             color: white;
-            
-            text-transform: uppercase;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 1px solid white;
+           
         }
         
         .cta-button:hover {
@@ -109,7 +127,7 @@ export default{
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
             background: white ;
             color:#dd0182 ;
-            border: 2px solid #dd0182;
+            border: 1px solid #dd0182;
         }
 
         .media-image {
@@ -124,41 +142,46 @@ export default{
         display: block;
     }
     @media(max-width:768px){
+       
         .container{
             flex-direction: column;
             align-items: center;
           
         }
-        .Media{
-            height: 300px;
-        }
-        .title{
-            color: #dd0182;
-            font-size: 20px;
-        }
-        .content{
-            font-size: 15px;
-        }
+       
         .media-image img{
             width: 350px;
         }
+        .title-small{
+            font-size: 12px;
+        }
          .title-large {
             color: #dd0182;
-            font-size: 45px;
+            font-size: 35px;
             text-transform: uppercase;
             font-weight: bold;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
         }
          .cta-button {
-            background:  #4a33d9;
+            background:  #dd0182;
             border: none;
-            border-radius: 25px;
+            border-radius: 10px;
             color: white;
-            font-size: 10px;
-            font-weight: bold;
-            text-transform: uppercase;
+            font-size: 9px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(1,1,0,0.2);
+            border: 1px solid white;
+             margin-top: 10px;
+
+     
+        }
+
+         .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: white ;
+            color:#dd0182 ;
+            border: 2px solid #dd0182;
         }
         
     }
