@@ -52,10 +52,10 @@
             <div class="collapse navbar-collapse navbar-collapse-1" :class="{ show: isMenuOpen }" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center d-flex flex-column flex-md-row align-items-center gap-2 mt-3 mt-md-0">
                     <li class="nav-item">
-                        <a class="nav-link" @click="toggleMenu" href="#">Trang chủ</a>
+                        <RouterLink class="nav-link" to="/learn-english">Trang chủ</RouterLink>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" @click="toggleMenu" href="#">Giới thiệu</a>
+                        <RouterLink class="nav-link" to="/learn-english/gioi-thieu">Giới thiệu</RouterLink>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" @click="toggleMenu" href="#">Từ vựng</a>
@@ -71,13 +71,13 @@
             </div>
             <div class="collapse navbar-collapse navbar-collapse-2" :class="{ show: isMenuOpen }" >
                 <ul class="navbar-nav ms-auto align-items-center d-flex flex-column flex-md-row align-items-center gap-2 mt-3 mt-md-0">
-                    <li class="nav-item" @click="showDialog_Login = true" v-if="showLogin_Register('Login')">
+                    <li class="nav-item" @click="showDialog_Login = true" v-if="!showLogin_Register('Login')">
                             <button class="btn cta-button cta-button-1" >
                                 <i class="fas fa-sign-in-alt fa-sign-in-alt-1 me-2"></i>
                                 Đăng nhập
                             </button>
                         </li>
-                        <li class="nav-item" @click="showDialog_Register = true" v-if="showLogin_Register('Register')">
+                        <li class="nav-item" @click="showDialog_Register = true" v-if="!showLogin_Register('Register')">
                             <button class="btn cta-button">
                                 <i class="fas fa-user-plus me-2"></i>
                                 Đăng ký ngay
@@ -89,7 +89,7 @@
                                 <i class="fas fa-sign-in-alt me-2"></i>
                             </button>
                         </li> -->
-                        <li class="nav-item"  @click="showDialog_Setting = true" v-if="!showLogin_Register('Setting')">
+                        <li class="nav-item"  @click="showDialog_Setting = true" v-if="showLogin_Register('Setting')">
                             <div class="search setting">
                                 <i class="fa-solid fa-gear"></i>
                             </div>
@@ -97,10 +97,10 @@
                         
                         <li class="nav-item">
                             <div class="location logout-item">
-                                <i class="fas fa-sign-in-alt me-2" v-if="!showLogin_Register('Logout')"></i>
+                                <i class="fas fa-sign-in-alt me-2" v-if="showLogin_Register('Logout')"></i>
                             </div>
                         </li>
-                        <li class="nav-item arrow-logo" v-if="!showLogin_Register('represent')">
+                        <li class="nav-item arrow-logo" v-if="showLogin_Register('represent')">
                             <a class="logo-replace" href="#">
                                 <div class="logo-img-replace">
                                     <img class="logo-main-replace" :class="{ show: isMenuOpen_2 }" src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_hybrid&w=740&q=80" alt="">
@@ -135,6 +135,8 @@ import LoginDialog from '@/components/AuthDialog/LoginDialog.vue';
 import ResetPasswordDialog from '@/components/AuthDialog/ResetPasswordDialog.vue';
 import ClauseCard from '@/components/AuthDialog/ClauseCard.vue';
 import SettingCard from '@/components/Settings/SettingCard.vue';
+import { RouterLink } from 'vue-router';
+
 export default{
     name:'AppHeater',
     components:{
@@ -146,7 +148,8 @@ export default{
         LoginDialog,
         ResetPasswordDialog,
         ClauseCard,
-        SettingCard
+        SettingCard,
+        RouterLink
     },
     data(){
         return{
