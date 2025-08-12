@@ -118,7 +118,7 @@ export default{
             color: white;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            border: 1px solid white;
+            /* border: 1px solid white; */
            
         }
         
@@ -170,7 +170,8 @@ export default{
             font-size: 9px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(1,1,0,0.2);
-            border: 1px solid white;
+            /* border: 1px solid white; */
+            width: 120px;
              margin-top: 10px;
 
      

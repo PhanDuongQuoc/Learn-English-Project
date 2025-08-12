@@ -4,7 +4,8 @@
 
     <div v-if="isLoading" class="page-loader">
       <div class="spinner"></div>
-      <div class="loading">Loading...</div>
+      
+      <div class="loading">Đang tải...</div>
     </div>
 
     <router-view v-show="!isLoading" />
@@ -35,7 +36,7 @@ export default {
     router.afterEach(() => {
       setTimeout(() => {
         isLoading.value = false
-      }, 800) 
+      }, 500) 
     })
 
     return { isLoading }
@@ -49,6 +50,8 @@ export default {
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+  scroll-behavior: auto !important;
+  
 }
 #app {
   font-family: "Mozilla Text", sans-serif;
