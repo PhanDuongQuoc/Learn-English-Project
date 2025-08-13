@@ -138,7 +138,7 @@ export default{
           
         }
          .Media{
-               height: 350px;
+              height: 300px;
         }
         .Content{
             height: 450px;
@@ -154,6 +154,7 @@ export default{
         }
         .media-image img{
             width: 350px !important;
+              height: 250px;
         }
         .btn{
         background-color: #dd0182 !important;
