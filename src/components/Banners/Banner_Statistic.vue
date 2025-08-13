@@ -1,4 +1,7 @@
 <template>
+    <div class="Title-container">
+        <Title_1 :Title="title"/>
+    </div>
     <div class="Container-wrap">
         <el-row :span="24" class="Container-wrap-statistic">
            <div class="wrap-statistic">
@@ -44,14 +47,26 @@
 </template>
 
 <script>
+import Title_1 from '../TitleCard/Title_1.vue';
     export default{
-        name:'AppBannerStatistic'
+        name:'AppBannerStatistic',
+        components:{
+            Title_1
+        },
+         data(){
+                return{
+                    title:{
+                        title:'Thống kê'
+                    }
+                
+                }
+            }
     }
 </script>
 
 <style scoped>
 .Container-wrap{
-    margin-bottom: 100px;
+    margin:80px 0;
 }
 .Container-wrap-statistic{
    background-color: #ebe6e9;

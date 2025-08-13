@@ -11,12 +11,12 @@
     <el-col :span="14">
         <div class="Content">
                 <div class="content-wrap" data-aos="fade-right" data-aos-duration="4000">
-                    <h2 class="title">
+                    <h2 class="title" data-aos="fade-right" data-aos-duration="4000">
                         
                         {{Content.title}}
                     </h2>
                     <br>
-                    <p class="content">
+                    <p class="content" data-aos="fade-right" data-aos-duration="4000">
                         {{ Content.content }}
                     </p>
                      <br>

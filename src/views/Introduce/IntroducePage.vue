@@ -11,11 +11,12 @@
         <div class="Introduce-about-card">
             <IntroduceCard_1/>
         </div>
-        <br>
-        <br>
-        <br>
+
         <div class="Banner-statistic">
             <BannerStatistic/>
+        </div>
+        <div class="Banner-google-map">
+            <BannerGoogleMap/>
         </div>
     </div>
   
@@ -25,13 +26,15 @@ import Banner_5 from '@/components/Banners/Banner_5.vue';
 import LayoutIntroduceAboutUs from '@/components/LayoutIntroduce/LayoutIntroduceAboutUs.vue';
 import IntroduceCard_1 from '@/components/IntroduceCard/IntroduceCard_1.vue';
 import BannerStatistic from '@/components/Banners/Banner_Statistic.vue';
+import BannerGoogleMap from '@/components/Banners/Banner_GoogleMap.vue';
 export default{
     name:'AppIntroduce',
     components:{
         Banner_5,
         LayoutIntroduceAboutUs,
         IntroduceCard_1,
-        BannerStatistic
+        BannerStatistic,
+        BannerGoogleMap
     },
     data(){
         return{
