@@ -122,6 +122,7 @@
     <ResetPasswordDialog v-model="showDialog_ResetPassword" @open-register="openRegisterDialog" data-aos="zoom-in" data-aos-duration="10000"></ResetPasswordDialog>
     <ClauseCard v-model = "showDialog_Clause" @close-clause="closeResetClause"></ClauseCard>
     <SettingCard v-model="showDialog_Setting"></SettingCard>
+    <MapCard v-model="showDialog_Map" data-aos="zoom-in" data-aos-duration="10000"></MapCard>
 </template>
 
 
@@ -241,9 +242,11 @@ export default{
          openResetClause(){
             this.showDialog_Clause = true;
         },
+      
         closeResetClause(){
             this.showDialog_Login=true;
         },
+
 
         showLogin_Register(val){
             if(val ==='Login'){

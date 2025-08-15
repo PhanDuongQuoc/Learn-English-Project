@@ -15,9 +15,13 @@
         <div class="Banner-statistic">
             <BannerStatistic/>
         </div>
+          <!-- <div class="Commnunicatio-Card">
+            <Communicationcard_1/>
+        </div> -->
         <div class="Banner-google-map">
             <BannerGoogleMap/>
         </div>
+      
     </div>
   
 </template>
@@ -27,6 +31,7 @@ import LayoutIntroduceAboutUs from '@/components/LayoutIntroduce/LayoutIntroduce
 import IntroduceCard_1 from '@/components/IntroduceCard/IntroduceCard_1.vue';
 import BannerStatistic from '@/components/Banners/Banner_Statistic.vue';
 import BannerGoogleMap from '@/components/Banners/Banner_GoogleMap.vue';
+// import Communicationcard_1 from '@/components/CommunicationCard/Communicationcard_1.vue';
 export default{
     name:'AppIntroduce',
     components:{
@@ -34,7 +39,8 @@ export default{
         LayoutIntroduceAboutUs,
         IntroduceCard_1,
         BannerStatistic,
-        BannerGoogleMap
+        BannerGoogleMap,
+        // Communicationcard_1
     },
     data(){
         return{

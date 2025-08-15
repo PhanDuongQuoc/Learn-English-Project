@@ -1,8 +1,12 @@
 <template>
-    <div class="Banner_1">
-        <Banner_1/>
+    <div class="Banner_6">
+        <Banner_6 :ContentBanner="contentData_10"/>
     </div>
+    <!-- <div class="Banner_1">
+        <Banner_1/>
+    </div> -->
     <br>
+  
     <div data-aos="fade-left" data-aos-duration="4000" class="Layout_1">
         <LayoutIntroduce_1 :Content="contentData_1"/>
     </div>
@@ -47,14 +51,15 @@ import LayoutIntroduce_1 from '@/components/LayoutIntroduce/LayoutIntroduce_1.vu
 import LayoutIntroduce_2 from '@/components/LayoutIntroduce/LayoutIntroduce_2.vue';
 import LayoutIntroduce_3 from '@/components/LayoutIntroduce/LayoutIntroduce_3.vue';
 import LayoutIntroduce_4 from '@/components/LayoutIntroduce/LayoutIntroduce_4.vue';
-import Banner_1 from '@/components/Banners/Banner_1.vue';
+// import Banner_1 from '@/components/Banners/Banner_1.vue';
 import Banner_2 from '@/components/Banners/Banner_2.vue';
 import Banner_3 from '@/components/Banners/Banner_3.vue';
 import Banner_4 from '@/components/Banners/Banner_4.vue';
+import Banner_6 from '@/components/Banners/Banner_6.vue';
 
 export default{
     name:'HomePage',
-    components:{ Banner_1, Banner_2,Banner_3, Banner_4,
+    components:{ Banner_2,Banner_3, Banner_4,Banner_6,
                 LayoutIntroduce_1,LayoutIntroduce_2,
                 LayoutIntroduce_3,LayoutIntroduce_4},
     data() {
@@ -109,7 +114,16 @@ export default{
             content: 'Vẫn là các bài học miễn phí và nhỏ gọn - nhưng là dành cho môn Toán! Các bài học vui nhộn giúp học sinh tiến bộ trên lớp còn người lớn có thể sử dụng để luyện tập thêm trí não và nâng cấp khả năng toán học.',
             image:require('@/assets/image/Layout/englishmath.png'),
             button:'CHINH PHỤC MÔN TOÁN BẰNG TIẾNG ANH'
-        }
+        },
+        contentData_10:{
+            title_small:'Từ mới - Tầm mới',
+            title_large: 'Học từ vựng cùng Learn English',
+            images: [
+                'https://www.teachingenglish.org.uk/sites/teacheng/files/images/GettyImages-612249076_web_0.jpeg',
+                 'https://bridge.edu/tefl/blog/wp-content/uploads/2024/08/Developing-Teamwork-and-Social-Skills-in-Business-English.jpg',
+                  'https://img-cdn.inc.com/image/upload/f_webp,c_fit,w_1920,q_auto/images/panoramic/getty_1395144844_h8h2eo.jpg',
+            ]
+        },
 
     }
   }
@@ -117,8 +131,8 @@ export default{
 </script>
 
 <style scoped>
-    .Banner_1{
-        margin-top: 135px;
+    .Banner_6{
+        margin-top: 150px;
     }
     
 </style>

@@ -56,7 +56,7 @@ import Title_1 from '../TitleCard/Title_1.vue';
          data(){
                 return{
                     title:{
-                        title:'Thống kê'
+                        title:'Thống Kê'
                     }
                 
                 }

@@ -6,12 +6,15 @@
         <el-row class="container-wrap-google-map">
             <el-col :xs="16" :sm="18" class="container-card container-google-map"  data-aos="fade-left" data-aos-duration="20000">
                  <div class="map-wrapper">
-                        <iframe class="iframe-map"  
+                    
+                         <iframe class="iframe-map"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15677.637159614036!2d106.7122688!3d10.7799315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f4649e7ca29%3A0x55f531b6120cae3b!2zTmjDoCBow6F0IFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1754358494411!5m2!1svi!2s" 
                             allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
+                    
             </el-col>
+   
             <el-col :xs="8" :sm="6" class="container-card container-title" data-aos="fade-right" data-aos-duration="20000">
                  <div class="Media">
                     <div class="media-image" >
@@ -19,7 +22,9 @@
                     </div>
                     <div class="media-text">
                         <div class="icon-cocated" data-aos="fade-right" data-aos-duration="20000">
-                            <i class="fa-solid fa-location-dot" ></i>
+                           <a @click="showDialog_Map=true">
+                             <i class="fa-solid fa-location-dot" ></i>
+                           </a>
                         </div>
                         <h2 class="title" data-aos="fade-right" data-aos-duration="20000">Learn English</h2>
                        
@@ -28,20 +33,29 @@
             </el-col>
         </el-row>
     </div>
+     <MapCard v-model="showDialog_Map" data-aos="zoom-in" data-aos-duration="10000"></MapCard>
 </template>
 <script>
 import Title_1 from '../TitleCard/Title_1.vue';
+import MapCard from '../Maps/MapCard.vue';
 export default{
     name:'AppBannerGoogleMap',
     components:{
-        Title_1
+        Title_1,MapCard
     },
     data(){
         return{
             title:{
                 title:'Google Map'
-            }
+            },
+            showDialog_Map: false
         
+        }
+    },
+    methods:{
+        openmap(){
+            this.showDialog_Map = true;
+            this.$emit('open-map')
         }
     }
 }
@@ -55,7 +69,8 @@ export default{
     height: 500px;
     border-top-right-radius: 70%;
     overflow: hidden;
-    border-right: 15px solid #4a33d9;
+    border-right: 10px solid #4a33d9;
+    border-bottom: 2px dashed #dd0182;
 }
 .map-wrapper{
     height: 100%;
@@ -67,7 +82,8 @@ export default{
 }
 
 .container-title{
- border-left: 15px solid #dd0182;
+ border-left: 10px solid #dd0182;
+ border-bottom: 2px dashed #4a33d9;
  border-top-left-radius: 100%;
  position: relative;
 }

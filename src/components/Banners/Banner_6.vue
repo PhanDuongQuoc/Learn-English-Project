@@ -4,19 +4,19 @@
         <div class="Content">
                 <div class="content-wrap">
                     <h3 class="title-small">
-                        <i class="fas fa-rocket icon-title"></i> 
+                        <!-- <i class="fas fa-rocket icon-title"></i>  -->
                         {{ ContentBanner.title_small }}
-                        <i class="fas fa-chart-line icon-title"></i>
+                        <!-- <i class="fas fa-chart-line icon-title"></i> -->
                     </h3>
                     <h2 class="title-large">
                         {{ContentBanner.title_large}}
                     </h2>
                     <br>
                     <div class="button-click">
-                        <button class="btn cta-button">
+                        <!-- <button class="btn cta-button">
                               <i class="fas fa-route"></i>
                                Xem lộ trình
-                        </button>
+                        </button> -->
                         <button class="btn cta-button">
                               <i class="fas fa-award"></i> 
                                Trải nghiệm ngay
@@ -31,7 +31,22 @@
     <el-col :span="12" class="bg-image" data-aos="fade-up"  data-aos-duration="8000">
         <div class="Media">
             <div class="media-image" data-aos="fade-up"  data-aos-duration="8000">
-                <img :src="ContentBanner.image" alt="">
+                 <button class="arrow arrow-left" @click="prevImage">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <transition name="fade" >
+                    <img 
+                      v-if="ContentBanner.images && ContentBanner.images.length" 
+                      :key="currentIndex" 
+                      :src="ContentBanner.images[currentIndex]" 
+                      alt=""
+                    >
+                </transition>
+
+                <button class="arrow arrow-right" @click="nextImage">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </el-col>
@@ -40,11 +55,36 @@
 
 <script>
 export default{
-    name:'Banner_5',
+    name:'Banner_6',
     props:{
         ContentBanner:{
             type: Object,
             required: true
+        }
+    },
+     data() {
+        return {
+            currentIndex: 0,
+            intervalId: null
+        }
+    },
+    mounted() {
+        this.startAutoSlide()
+    },
+    beforeUnmount() {
+        clearInterval(this.intervalId)
+    },
+    methods: {
+        startAutoSlide() {
+            if (this.ContentBanner.images && this.ContentBanner.images.length > 0) {
+                this.intervalId = setInterval(this.nextImage, 10000)
+            }
+        },
+        nextImage() {
+            this.currentIndex = (this.currentIndex + 1) % this.ContentBanner.images.length
+        },
+        prevImage() {
+            this.currentIndex = (this.currentIndex - 1 + this.ContentBanner.images.length) % this.ContentBanner.images.length
         }
     }
 }
@@ -86,6 +126,29 @@ export default{
         font-weight: bold;
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
       
+    }
+    .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #dd0182;
+        border: none;
+        color: white;
+        font-size: 24px;
+        padding: 8px 12px;
+        cursor: pointer;
+        z-index: 2;
+        border-radius: 50%;
+        transition: background 0.3s;
+    }
+    .arrow:hover {
+        opacity: 0.5;
+    }
+    .arrow-left {
+        left: 60px;
+    }
+    .arrow-right {
+        right: 40px;
     }
     .fas{
         margin-right: 10px;
@@ -146,7 +209,7 @@ export default{
             align-items: center;
           
         }
-       
+  
         .media-image img{
             width: 350px;
         }
@@ -159,6 +222,12 @@ export default{
             text-transform: uppercase;
             font-weight: bold;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+        }
+        .arrow-left {
+            left: 10px;
+        }
+        .arrow-right {
+            right: 10px;
         }
          .cta-button {
             background:  #dd0182;

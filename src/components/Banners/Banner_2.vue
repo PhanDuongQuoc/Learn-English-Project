@@ -58,10 +58,14 @@ export default{
 
     .btn{
         background-color: #dd0182 !important;
-        border: 2px solid white;
+        border:none ;
         color: white !important;
         border-radius: 10px !important;
       
+    }
+    .display-1 {
+        width: 600px;
+        margin:0 auto;
     }
     .btn:hover{
         background-color:white !important;
@@ -79,13 +83,15 @@ export default{
 
     @media (max-width: 768px) {
         .display-1 {
-            font-size: 35px !important;
+            font-size: 25px !important;
+             width: 350px;
+             margin:0 auto;
         }
         .btn{
-            width: 150px;
+            width: 120px;
             margin-left: auto;
             margin-right: auto;
-            font-size: 12px;
+            font-size: 9px;
         }
 
     }

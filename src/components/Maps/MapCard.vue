@@ -6,6 +6,7 @@
   destroy-on-close
   @close="handleClose"
   class="custom-dialog custommap"
+  
   >
   <template #header>
     <div class="titlecard-container">
@@ -85,7 +86,8 @@ export default {
   handleClose() {
     this.visiblemap = false;
     this.$emit('update:modelValue', false);
-  }
+  },
+
   }
 }
 </script>
