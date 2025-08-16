@@ -35,15 +35,14 @@
                     <i class="fas fa-chevron-left"></i>
                 </button>
 
-                <transition name="fade" >
-                    <img 
-                      v-if="ContentBanner.images && ContentBanner.images.length" 
-                      :key="currentIndex" 
-                      :src="ContentBanner.images[currentIndex]" 
-                      alt=""
-                    >
-                </transition>
-
+        
+                <img 
+                    v-if="ContentBanner.images && ContentBanner.images.length" 
+                    :key="currentIndex" 
+                    :src="ContentBanner.images[currentIndex]" 
+                    alt=""
+                >
+      
                 <button class="arrow arrow-right" @click="nextImage">
                     <i class="fas fa-chevron-right"></i>
                 </button>
@@ -77,7 +76,7 @@ export default{
     methods: {
         startAutoSlide() {
             if (this.ContentBanner.images && this.ContentBanner.images.length > 0) {
-                this.intervalId = setInterval(this.nextImage, 10000)
+                this.intervalId = setInterval(this.nextImage, 4000)
             }
         },
         nextImage() {

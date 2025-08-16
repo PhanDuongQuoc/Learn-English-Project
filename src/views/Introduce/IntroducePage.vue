@@ -4,22 +4,30 @@
             <Banner_5 :ContentBanner="contentData_5"/>
         </div>
         <div class="Introduce-about-us">
-             <div data-aos="fade-left" data-aos-duration="4000" class="layout_4">
+             <div data-aos="fade-right" data-aos-duration="4000" class="layout_4">
                 <LayoutIntroduceAboutUs :Content="contentData_7"/>
             </div>
         </div>
         <div class="Introduce-about-card">
-            <IntroduceCard_1/>
+            <div data-aos="fade-left" data-aos-duration="4000" class="About-Card" >
+                <IntroduceCard_1 />
+            </div>
         </div>
 
         <div class="Banner-statistic">
-            <BannerStatistic/>
+            <div data-aos="fade-right" data-aos-duration="4000" class="BannerStatistic">
+                <BannerStatistic/>
+            </div>
         </div>
-          <!-- <div class="Commnunicatio-Card">
-            <Communicationcard_1/>
-        </div> -->
+          <div class="Commnunicatio-Card">
+            <div data-aos="fade-left" data-aos-duration="4000" class="Commnunicationcard">
+                <Communicationcard_1 :SlideBanner="slidebanner" :images="smallImages"/>
+            </div>
+        </div>
         <div class="Banner-google-map">
-            <BannerGoogleMap/>
+           <div data-aos="fade-right" data-aos-duration="4000" class="Banner-map">
+             <BannerGoogleMap/>
+           </div>
         </div>
       
     </div>
@@ -31,7 +39,7 @@ import LayoutIntroduceAboutUs from '@/components/LayoutIntroduce/LayoutIntroduce
 import IntroduceCard_1 from '@/components/IntroduceCard/IntroduceCard_1.vue';
 import BannerStatistic from '@/components/Banners/Banner_Statistic.vue';
 import BannerGoogleMap from '@/components/Banners/Banner_GoogleMap.vue';
-// import Communicationcard_1 from '@/components/CommunicationCard/Communicationcard_1.vue';
+import Communicationcard_1 from '@/components/CommunicationCard/Communicationcard_1.vue';
 export default{
     name:'AppIntroduce',
     components:{
@@ -40,7 +48,7 @@ export default{
         IntroduceCard_1,
         BannerStatistic,
         BannerGoogleMap,
-        // Communicationcard_1
+        Communicationcard_1
     },
     data(){
         return{
@@ -57,10 +65,27 @@ export default{
                 button_goal:'Mục tiêu',
                 button_method:'Phương pháp'
             },
+            slidebanner:{
+           
+                    images: [
+                        'https://promova.com/content/group_learning_e69e5bd76b.jpg',
+                        'https://buildconfianza.com/wp-content/uploads/2018/02/img-1.jpg',
+                        'https://www.betterup.com/hubfs/coworkers-giving-high-five-to-each-other-after-meeting-benefits-of-temwork-1.jpg',
+                    ]
+                },
+
+                smallImages: [
+                        'https://kidsdiscover.com/wp-content/uploads/2018/09/Teaching_Teamwork.jpg',
+                        'https://previews.123rf.com/images/dolgachov/dolgachov1611/dolgachov161105006/65553746-education-school-teamwork-and-people-concept-group-of-international-students-with-hands-on-top.jpg',
+                        'https://www.rmcad.edu/wp-content/uploads/2025/01/shutterstock_2253876977-scaled.jpg',
+                        'https://www.flyfive.org/wp-content/uploads/2022/11/11_28_22_Flyby_article_image_1Website.png',
+                    ]
         }
-    }
+    },
+    
 }
 </script>
+
 <style scoped>
 .Container-introduce{
     margin-top: 150px;

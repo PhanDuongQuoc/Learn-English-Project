@@ -19,7 +19,7 @@ import AppHeader from './share/Header.vue'
 import AppFooter from './share/Footer.vue'
 import { ref } from 'vue'
 import router from './router'
-
+import AOS from 'aos'
 export default {
   name: 'App',
   components: { AppHeader, AppFooter },
@@ -40,7 +40,24 @@ export default {
     })
 
     return { isLoading }
-  }
+  },
+   mounted() {
+        AOS.init({
+            duration: 1200,
+            once: false, 
+            mirror: true
+        });
+        
+        this.$nextTick(() => {
+            AOS.refresh();
+        });
+    },
+    updated() {
+        AOS.refresh();
+    },
+    beforeUnmount() {
+        AOS.refresh();
+    }
 }
 </script>
 

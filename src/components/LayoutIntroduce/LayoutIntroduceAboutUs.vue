@@ -157,14 +157,15 @@ export default{
               height: 250px;
         }
         .btn{
-        background-color: #dd0182 !important;
-        border: 2px solid white;
-        color: white !important;
-        border-radius: 10px !important;
-        text-transform: uppercase;
-        font-size: 10px;
-        box-shadow: 14px 4px 15px rgba(0,0,0,0.2);
-    
+            background-color: #dd0182 !important;
+            border: 2px solid white;
+            color: white !important;
+            border-radius: 10px !important;
+            text-transform: uppercase;
+            font-size: 9px;
+            box-shadow: 14px 4px 15px rgba(0,0,0,0.2);
+            width: 120px; 
+            margin: 0 auto; 
         }
     }
 
