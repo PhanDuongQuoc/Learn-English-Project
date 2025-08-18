@@ -71,6 +71,7 @@ import Title_1 from '../TitleCard/Title_1.vue';
 .Container-wrap-statistic{
    background-color: #ebe6e9;
    padding: 20px 0;
+   
 
 }
 

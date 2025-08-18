@@ -40,10 +40,15 @@
     <div data-aos="fade-left" data-aos-duration="4000" class="layout_6">
         <LayoutIntroduce_4 styleWidth="450px" :Content="contentData_9"/>
     </div>
-    <br/>
+    <br>
+    <div  data-aos="fade-right" data-aos-duration="4000" class="banner-topic_1">
+        <TopicBanner_1/>
+    </div>
+    <br><br><br><br><br>
     <div data-aos="zoom-out" data-aos-duration="4000" class="Banner_4">
         <Banner_4/>
     </div>
+
 </template>
 
 <script>
@@ -56,12 +61,12 @@ import Banner_2 from '@/components/Banners/Banner_2.vue';
 import Banner_3 from '@/components/Banners/Banner_3.vue';
 import Banner_4 from '@/components/Banners/Banner_4.vue';
 import Banner_6 from '@/components/Banners/Banner_6.vue';
-
+import TopicBanner_1 from '@/components/TopicBanners/TopicBanner_1.vue';
 export default{
     name:'HomePage',
     components:{ Banner_2,Banner_3, Banner_4,Banner_6,
                 LayoutIntroduce_1,LayoutIntroduce_2,
-                LayoutIntroduce_3,LayoutIntroduce_4},
+                LayoutIntroduce_3,LayoutIntroduce_4,TopicBanner_1},
     data() {
     return {
         contentData_1: {

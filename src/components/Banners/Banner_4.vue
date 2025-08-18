@@ -48,6 +48,9 @@ export default{
 </script>
 
 <style scoped>
+.container-banner{
+    margin-bottom: 75px;
+}
     .container-fluid {
        background: linear-gradient(135deg, #4a33d9 0%, #4a33d9 100%);
          border-top-left-radius: 25%;

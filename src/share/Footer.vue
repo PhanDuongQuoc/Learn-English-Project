@@ -313,9 +313,8 @@ export default{
 </script>
 
 <style scoped>
-     /* Footer Styles */
         .footer{
-                margin-top: -17px;
+                margin-top: -95px;
               
         }
         .bg-footer {

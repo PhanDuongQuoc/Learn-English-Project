@@ -32,6 +32,7 @@ export default{
 .Tilte{
     color: #dd0182;
     font-size: 40px;
+    font-weight: bold;
 }
 @media(max-width:768px){
     .Tilte{

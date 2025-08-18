@@ -29,8 +29,10 @@
              <BannerGoogleMap/>
            </div>
         </div>
+    
       
     </div>
+
   
 </template>
 <script>

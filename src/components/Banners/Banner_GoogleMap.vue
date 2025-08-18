@@ -70,7 +70,6 @@ export default{
     border-top-right-radius: 70%;
     overflow: hidden;
     border-right: 10px solid #4a33d9;
-    border-bottom: 2px dashed #dd0182;
 }
 .map-wrapper{
     height: 100%;
@@ -81,9 +80,9 @@ export default{
     border: none;
 }
 
+
 .container-title{
  border-left: 10px solid #dd0182;
- border-bottom: 2px dashed #4a33d9;
  border-top-left-radius: 100%;
  position: relative;
 }
@@ -116,7 +115,9 @@ export default{
     display: block;
     opacity: 0.3;
 }
-
+.media-image img:hover{
+    transform: scale(1.5);
+}
 .media-text {
     position: absolute;
     top: 50%;  
