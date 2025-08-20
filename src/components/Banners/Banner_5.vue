@@ -1,23 +1,23 @@
 <template>
- <el-row :span="24" class="container-introduce-wrap">
-    <el-col data-aos="fade-up"  data-aos-duration="8000"  :span="12">
+ <el-row :span="24" class="container-introduce-wrap"  data-aos="fade-up"  data-aos-duration="4000">
+    <el-col :span="12" class="Content-wrap">
         <div class="Content">
                 <div class="content-wrap">
-                    <h3 class="title-small">
+                    <h3 class="title-small" data-aos="fade-up"  data-aos-duration="4000">
                         <i class="fas fa-rocket icon-title"></i> 
                         {{ ContentBanner.title_small }}
                         <i class="fas fa-chart-line icon-title"></i>
                     </h3>
-                    <h2 class="title-large">
+                    <h2 class="title-large" data-aos="fade-up"  data-aos-duration="4000">
                         {{ContentBanner.title_large}}
                     </h2>
                     <br>
                     <div class="button-click">
-                        <button class="btn cta-button">
+                        <button class="btn cta-button" data-aos="fade-up"  data-aos-duration="4000">
                               <i class="fas fa-route"></i>
                                Xem lộ trình
                         </button>
-                        <button class="btn cta-button">
+                        <button class="btn cta-button" data-aos="fade-up"  data-aos-duration="4000">
                               <i class="fas fa-award"></i> 
                                Trải nghiệm ngay
                         </button>

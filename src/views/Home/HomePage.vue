@@ -44,6 +44,12 @@
     <div  data-aos="fade-right" data-aos-duration="4000" class="banner-topic_1">
         <TopicBanner_1/>
     </div>
+    <br>
+    <div class="Contact-card">
+        <div data-aos="fade-left" data-aos-duration="4000" class="contactcard">
+            <ContactCard_1/>
+        </div>
+    </div>
     <br><br><br><br><br>
     <div data-aos="zoom-out" data-aos-duration="4000" class="Banner_4">
         <Banner_4/>
@@ -62,11 +68,12 @@ import Banner_3 from '@/components/Banners/Banner_3.vue';
 import Banner_4 from '@/components/Banners/Banner_4.vue';
 import Banner_6 from '@/components/Banners/Banner_6.vue';
 import TopicBanner_1 from '@/components/TopicBanners/TopicBanner_1.vue';
+import ContactCard_1 from '@/components/ContactCards/ContactCard_1.vue';
 export default{
     name:'HomePage',
     components:{ Banner_2,Banner_3, Banner_4,Banner_6,
                 LayoutIntroduce_1,LayoutIntroduce_2,
-                LayoutIntroduce_3,LayoutIntroduce_4,TopicBanner_1},
+                LayoutIntroduce_3,LayoutIntroduce_4,TopicBanner_1,ContactCard_1},
     data() {
     return {
         contentData_1: {

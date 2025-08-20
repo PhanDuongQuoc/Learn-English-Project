@@ -24,6 +24,13 @@
                 <Communicationcard_1 :SlideBanner="slidebanner" :images="smallImages"/>
             </div>
         </div>
+        <br>
+        <div class="Contact-card">
+            <div data-aos="fade-left" data-aos-duration="4000" class="contactcard">
+                <ContactCard_1/>
+            </div>
+
+        </div>
         <div class="Banner-google-map">
            <div data-aos="fade-right" data-aos-duration="4000" class="Banner-map">
              <BannerGoogleMap/>
@@ -42,6 +49,7 @@ import IntroduceCard_1 from '@/components/IntroduceCard/IntroduceCard_1.vue';
 import BannerStatistic from '@/components/Banners/Banner_Statistic.vue';
 import BannerGoogleMap from '@/components/Banners/Banner_GoogleMap.vue';
 import Communicationcard_1 from '@/components/CommunicationCard/Communicationcard_1.vue';
+import ContactCard_1 from '@/components/ContactCards/ContactCard_1.vue';
 export default{
     name:'AppIntroduce',
     components:{
@@ -50,7 +58,8 @@ export default{
         IntroduceCard_1,
         BannerStatistic,
         BannerGoogleMap,
-        Communicationcard_1
+        Communicationcard_1,
+        ContactCard_1
     },
     data(){
         return{

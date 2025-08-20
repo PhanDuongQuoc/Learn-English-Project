@@ -46,19 +46,25 @@
                                 <div class="content-img">
                                     <img data-aos="fade-left" data-aos-duration="4000" src="https://www.hopkinsmedicine.org/-/media/images/health/3_-wellness/kids-and-teens-health/kids-and-teens-health-hero.jpg?h=500&iar=0&mh=500&mw=1300&w=1297&hash=872C5B0EB8CA7CD30E8CDB4DB96CFC8B" alt="">
                                 </div>
+                                <div class="image-position">
+                                    <img src="../../assets/image/banner_topic/logo-english.png" alt="">
+                                </div>
                            </div>
                         </el-col>
                        <el-col :xs="24" :sm="12" class="wrap-card-4">
                             <div class="card-inner cream-card">
                                 <div class="content-title">
-                                <h4  data-aos="fade-left" data-aos-duration="4000" class="title">SAT Preparation</h4>
-                                <p  data-aos="fade-left" data-aos-duration="4000" class="content">
-                                Luyện thi SAT tại The Forum với lộ trình học tập khoa học, giúp cải thiện và phát triển toàn diện kỹ năng cho học viên với trọng tâm sát nhất với các tiêu chí đánh giá của bài thi             
-                               </p>
-                            </div>
-                            <div class="content-img" >
-                                <img  data-aos="fade-left" data-aos-duration="4000" src="https://www.endurosat.com/wp-content/uploads/2019/10/EnduroSat-is-now-a-member-of-the-International-Astronautical-Federation-IAF-3-1504x1080.jpg" alt="">
-                            </div>
+                                    <h4  data-aos="fade-left" data-aos-duration="4000" class="title">SAT Preparation</h4>
+                                    <p  data-aos="fade-left" data-aos-duration="4000" class="content">
+                                    Luyện thi SAT tại The Forum với lộ trình học tập khoa học, giúp cải thiện và phát triển toàn diện kỹ năng cho học viên với trọng tâm sát nhất với các tiêu chí đánh giá của bài thi             
+                                </p>
+                                </div>
+                                <div class="content-img" >
+                                    <img  data-aos="fade-left" data-aos-duration="4000" src="https://maths.wizert.com/files/medialibrary/3db66ad0ab85fe4cb7ffb5c7a27c9e6b.jpg" alt="">
+                                </div>
+                                 <div class="image-position ">
+                                    <img src="../../assets/image/banner_topic/sat.png" alt="">
+                                </div>
                             </div>
                         </el-col>
                     </el-row>
@@ -108,6 +114,7 @@ export default{
 
 }
 .content-img img{
+  
     width: 100%;
     height: 100%;
     display: block;
@@ -125,16 +132,28 @@ export default{
 
     height: 500px;
     border-radius: 40px;
+    position: relative;
     
+}
+.image-position{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+   
+   
+}
+.image-position img{
+    width: 150px;
 }
 .cream-card{
      background-color: #F7F4ED;
 
     height: 500px;
     border-radius: 40px;
+     position: relative;
 }
 .second-banner{
-    width: 100%;
+ width: 100%;
   width: 1200px;
   margin: 0 auto;
    
