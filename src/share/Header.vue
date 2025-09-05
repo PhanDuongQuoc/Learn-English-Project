@@ -58,7 +58,7 @@
                         <RouterLink class="nav-link" @click="toggleMenu" to="/learn-english/gioi-thieu">Giới thiệu</RouterLink>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" @click="toggleMenu" href="#">Từ vựng</a>
+                        <RouterLink class="nav-link" @click="toggleMenu" to="/learn-english/tu-vung-tieng-anh">Từ vựng</RouterLink>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" @click="toggleMenu" href="#">Blog</a>

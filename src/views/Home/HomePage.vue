@@ -50,7 +50,7 @@
             <ContactCard_1/>
         </div>
     </div>
-    <br><br><br><br><br>
+    
     <div data-aos="zoom-out" data-aos-duration="4000" class="Banner_4">
         <Banner_4/>
     </div>
