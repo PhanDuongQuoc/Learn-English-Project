@@ -439,8 +439,9 @@ export default{
 }
 
 .card-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    color: #dd0182;
+    border: 2px solid #dd0182;
 }
 @media(max-width:768px){
     .container-card-topic{
