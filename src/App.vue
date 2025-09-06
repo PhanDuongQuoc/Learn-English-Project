@@ -1,14 +1,19 @@
 <template>
-  <div id="App">
+  <div id="app">
     <AppHeader />
 
-    <div v-if="isLoading" class="page-loader">
-      <div class="spinner"></div>
-      
-      <div class="loading">Đang tải...</div>
-    </div>
+    <div class="view-container">
+      <div v-if="isLoading" class="page-loader">
+        <div class="spinner">
+       
+        </div>
+        
+        <div class="loading">Đang tải...</div>
+        <img class="img-spinder" src="./assets/image/loadingimage/dragon-icon.png" alt="">
+      </div>
 
-    <router-view v-show="!isLoading" />
+      <router-view v-show="!isLoading" />
+    </div>
 
     <AppFooter />
   </div>
@@ -75,34 +80,47 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  /* color: #2c3e50; */
+  color: rgb(119, 119, 119);
 }
 .el-dialog {
   margin-top: auto !important;
   margin-bottom: auto !important;
   bottom: 30px !important;
 }
+.view-container{
+   position: relative;
+   min-height: 800px;
+}
 .loading{
   color: #4a33d9;
   margin-left: 15px;
 }
 .page-loader {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(255, 255, 255, 0.9);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 9999;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  z-index: 99;
 
 }
 
 .spinner {
   width: 50px;
   height: 50px;
-  border: 5px solid #ccc; 
+  border: 5px dotted  #ccc; 
   border-top-color: #4a33d9; 
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+  animation: spin 2s linear infinite;
+}
+.img-spinder{
+  width: 50px;
+  height: 50px;
 }
 
 @keyframes spin {

@@ -26,8 +26,7 @@ export default{
     name:'AppWordPage',
     components:{
         Title_2, SearchWordCard, TopicCard_1
-    }
-    , 
+    }, 
      data(){
         return{
             title:{title:'Danh sách từ vựng',content:'Khám phá thư viện của chúng tôi với hơn 1500 từ vựng được tuyển chọn.'},

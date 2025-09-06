@@ -3,7 +3,7 @@
         <!--card 1-->
            <div class="cards-grid">
           
-                <div class="topic-card card-all">
+                <div class="topic-card card-all ">
                     <div class="difficulty-badge" data-aos="fade-left" data-aos-duration="20000">Topic 1</div>
                     <div class="card-header" data-aos="fade-left" data-aos-duration="20000">
                         <div class="card-icon floating" data-aos="fade-left" data-aos-duration="20000">
@@ -42,7 +42,14 @@
                             <span class="stat-label">Quiz</span>
                         </div>
                     </div>
-                    <button class="card-button" data-aos="fade-left" data-aos-duration="1000">Học ngay</button>
+                        <RouterLink to="/learn-english/tu-vung-tieng-anh/chu-de">
+                             <button class="card-button" data-aos="fade-left" data-aos-duration="1000">
+                      
+                                Học Ngay
+                      
+                            </button>
+                        </RouterLink>
+                   
                 </div>
             </div>
             <!--card 2-->
@@ -181,10 +188,12 @@
     </div>
 </template>
 <script>
+import { RouterLink } from 'vue-router';
+
 export default{
     name:'TopicCard_1',
     components:{
-
+        RouterLink
     }
 }
 </script>
@@ -202,8 +211,8 @@ export default{
     margin-bottom: 50px;
 }
 .topic-card {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 24px;
+    background:var(--accent-color);
+    border-radius: 50px;
     padding: 30px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -222,7 +231,7 @@ export default{
     left: 0;
     width: 100%;
     height: 5px;
-    background: var(--accent-color);
+    background: #dd0182;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s ease;
@@ -235,12 +244,13 @@ export default{
 .topic-card:hover {
     transform: translateY(-12px);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
-    background: rgba(255, 255, 255, 1);
+
 }
 
 .card-all {
     --accent-color: #4a33d9;
 }
+
 
 .difficulty-badge {
     position: absolute;
@@ -309,7 +319,8 @@ export default{
 }
 
 .card-title {
-    font-size: 1.6rem;
+    box-shadow: 10px 2px 4px rgba(206, 206, 198, 0.05);
+    font-size: 1.8rem;
     font-weight: 700;
     color: #dd0182;
     margin-bottom: 8px;
@@ -317,7 +328,7 @@ export default{
 }
 
 .card-subtitle {
-    color: var(--accent-color);
+    color:white ;
     font-size: 0.95rem;
     font-weight: 500;
     text-transform: uppercase;
@@ -325,22 +336,22 @@ export default{
 }
 
 .card-description {
-    color: #4a5568;
+    color: white;
     font-size: 1.05rem;
     line-height: 1.7;
     margin-bottom: 25px;
 }
 
 .vocabulary-preview {
-    background: #f7fafc;
-    border-radius: 12px;
+    background: #dd0182;
+    border-radius: 25px;
     padding: 20px;
     margin-bottom: 25px;
     border-left: 4px solid var(--accent-color);
 }
 
 .vocabulary-preview h4 {
-    color: #dd0182;
+    color: white;
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 15px;
@@ -359,11 +370,11 @@ export default{
 }
 
 .vocab-item {
-    background: white;
+    background:#4a33d9;
     padding: 8px 12px;
     border-radius: 8px;
     font-size: 0.9rem;
-    color: #4a5568;
+    color: white;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     transition: all 0.2s ease;
     border: 1px solid #e2e8f0;
@@ -372,14 +383,13 @@ export default{
 .vocab-item:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    color: var(--accent-color);
     border-color: var(--accent-color);
 }
 
 .card-stats {
     display: flex;
     justify-content: space-between;
-    background: #f8f9fa;
+    background: #4a33d9;
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 12px;
@@ -393,14 +403,14 @@ export default{
 .stat-number {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--accent-color);
+    color: #dd0182;
     display: block;
     margin-bottom: 5px;
 }
 
 .stat-label {
     font-size: 0.85rem;
-    color: #718096;
+    color: white;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: 500;
@@ -412,7 +422,7 @@ export default{
     color: white;
     border: none;
     padding: 16px 25px;
-    border-radius: 12px;
+    border-radius: 25px;
     font-size: 1.05rem;
     font-weight: 600;
     cursor: pointer;
@@ -464,7 +474,7 @@ export default{
 }
 
 .cards-grid{
-    border-top: 5px solid #4a33d9;
+    /* border-top: 5px solid #4a33d9; */
     border-top-left-radius:20px ;
     border-top-right-radius:20px ;
 }
