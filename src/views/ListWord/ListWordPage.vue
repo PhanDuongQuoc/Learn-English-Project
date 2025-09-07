@@ -13,7 +13,7 @@
         <div class="header-content-container" data-aos="fade-right" data-aos-duration="8000"> 
             <div class="start-study-button">
                 <button class="start-button">
-                    <i class="fa-solid fa-play start-solid"></i>
+                    <i class="fa-solid fa-play start-solid start-fa-solid"></i>
                     Bất đầu học
                 </button>
 
@@ -36,13 +36,37 @@
   
         <div class="Word-card-wrap" data-aos="fade-right" data-aos-duration="8000">
             <WordCard
-                v-for="(item,index) in wordlist" 
+                v-for="(item,index) in paginatedWords" 
                 :key="index"
                 :Words="item"
             />
         </div>
-        <br>
-        <br>
+        
+
+        <div class="pagination-container">
+        <button
+            class="page-btn"
+            :disabled="currentPage === 1"
+            @click="backCurrentPage"
+        >
+            <i class="fa-solid fa-chevron-left icon-pagination"></i>
+        </button>
+
+        <span class="page-info">
+             {{ currentPage }} / {{ totalPages }}
+        </span>
+
+        <button
+            class="page-btn"
+            :disabled="currentPage === totalPages"
+            @click="nextCurrentPage"
+        >
+            <i class="fa-solid fa-chevron-right icon-pagination"></i>
+        </button>
+        </div>
+
+        <br /><br />
+
         <div class="back-page-before" data-aos="fade-right" data-aos-duration="8000">
             <RouterLink to="/learn-english/tu-vung-tieng-anh">
 
@@ -90,10 +114,37 @@ export default{
             { word: "car", pronunciation: "/kɑːr/" },
             { word: "bus", pronunciation: "/bʌs/" },
             { word: "bicycle", pronunciation: "/ˈbaɪ.sɪ.kəl/" }
-            ]
+            ],
+
+            currentPage: 1,
+            itemsPerPage: 8,
 
         }
     },
+
+     computed: {
+        
+        totalPages() {
+           
+            return Math.ceil(this.wordlist.length / this.itemsPerPage);
+            
+        },
+        paginatedWords() {
+            const start = (this.currentPage - 1) * this.itemsPerPage;
+            console.log({current:this.currentPage,items:this.itemsPerPage})
+            const end = start + this.itemsPerPage;
+            return this.wordlist.slice(start, end);
+        },
+    },
+    methods:{
+        nextCurrentPage(){
+            return this.currentPage++;
+        },
+        backCurrentPage(){
+            return this,this.currentPage--;
+        }
+    }
+  
 }
 </script>
 <style scoped>
@@ -131,11 +182,18 @@ export default{
     font-size: 15px;
     border:1px solid #4a33d9;
     padding: 5px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+       display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 .start-button:active{
     background-color: white;
     color: #4a33d9;
+}
+
+.start-button:active .start-fa-solid{
+    filter: brightness(0) saturate(100%) invert(19%) sepia(100%) saturate(2713%) hue-rotate(245deg) brightness(86%) contrast(99%);
 }
 .fa-solid{
     font-size: 25px;
@@ -160,6 +218,40 @@ export default{
     
 
 }
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.page-btn {
+  background: #dd0182;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  padding: 0 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  justify-content: center;
+  align-items: center;
+  display: block;
+}
+.page-btn:disabled {
+  background: #4a33d9;
+  cursor: not-allowed;
+}
+.page-info {
+  font-size: 0.8rem;
+  color: #4a33d9;
+  font-weight: bold;
+}
+.icon-pagination{
+    font-size: 15px;
+}
+
 .Word-card-wrap{
     width: 1200px;
     background-color: #dd0182;
@@ -179,7 +271,9 @@ export default{
     background-color: #dd0182;
     color: white;
     font-size: 15px;
-    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 5px;   
     border-radius: 20px;
 }
@@ -189,6 +283,11 @@ export default{
 }
 .fa-backward{
     margin-right: 10px;
+    
+}
+
+.back-button:hover .fa-backward{
+   filter: brightness(0) saturate(100%) invert(13%) sepia(97%) saturate(6587%) hue-rotate(317deg) brightness(88%) contrast(104%);
 }
 
 @media (max-width:768px)
@@ -246,5 +345,9 @@ export default{
 
 
     }
+    .icon-pagination{
+        font-size: 12px;
+    }
+
 }
 </style>

@@ -93,7 +93,14 @@
                             <span class="stat-label">Quiz</span>
                         </div>
                     </div>
-                    <button class="card-button" data-aos="fade-left" data-aos-duration="1000">Học ngay</button>
+                   <RouterLink to="/learn-english/tu-vung-tieng-anh/chu-de">
+                             <button class="card-button" data-aos="fade-left" data-aos-duration="1000">
+                      
+                                Học Ngay
+                      
+                            </button>
+                        </RouterLink>
+                   
                 </div>
             </div>
             <!--card 3-->
@@ -137,7 +144,14 @@
                             <span class="stat-label">Quiz</span>
                         </div>
                     </div>
-                    <button class="card-button" data-aos="fade-left" data-aos-duration="1000">Học ngay</button>
+                    <RouterLink to="/learn-english/tu-vung-tieng-anh/chu-de">
+                             <button class="card-button" data-aos="fade-left" data-aos-duration="1000">
+                      
+                                Học Ngay
+                      
+                            </button>
+                        </RouterLink>
+                   
                 </div>
             </div>
             <!--card 4-->
@@ -181,7 +195,14 @@
                             <span class="stat-label">Quiz</span>
                         </div>
                     </div>
-                    <button class="card-button" data-aos="fade-left" data-aos-duration="1000">Học ngay</button>
+                  <RouterLink to="/learn-english/tu-vung-tieng-anh/chu-de">
+                             <button class="card-button" data-aos="fade-left" data-aos-duration="1000">
+                      
+                                Học Ngay
+                      
+                            </button>
+                        </RouterLink>
+                   
                 </div>
             </div>
 
