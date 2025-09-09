@@ -40,7 +40,7 @@
         <div class="container" data-aos="fade-left" data-aos-duration="4000">
             <a class="logo" href="#">
                 <div class="logo-img">
-                    <img class="logo-main" :class="{ show: isMenuOpen_2 }" src="https://media.istockphoto.com/id/1306202399/vector/vector-logo-or-icon-with-big-ben-for-learn-english.jpg?s=612x612&w=0&k=20&c=bYjpgt6laegr5hkj0wZBSf03Qd06W6ToXBuL4_kgg8E=" alt="">
+                    <img class="logo-main" :class="{ show: isMenuOpen_2 }" src="../assets/image/logo-google.png" alt="">
                 </div>
                 <h1 class="logo-text" :class="{ show: isMenuOpen_2 }">Learn English</h1>
             </a>

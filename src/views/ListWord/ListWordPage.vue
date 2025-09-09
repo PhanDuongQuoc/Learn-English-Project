@@ -53,7 +53,7 @@
         </button>
 
         <span class="page-info">
-             {{ currentPage }} / {{ totalPages }}
+             {{ currentPage }} - {{ totalPages }}
         </span>
 
         <button
@@ -150,7 +150,7 @@ export default{
 <style scoped>
 .word-list-container{
       margin-top: 220px;
-    margin-bottom: 150px;
+    margin-bottom: 120px;
 }
 .header-content-container{
     background-color: #dd0182;
@@ -305,7 +305,7 @@ export default{
         margin: 0 auto;
     }
     .Word-card-wrap{
-         width: 100%;
+        width: 100%;
         padding: 15px;
         grid-template-columns: repeat(2,1fr);
         border-radius: 20px;

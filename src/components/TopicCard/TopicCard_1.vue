@@ -42,8 +42,8 @@
                             <span class="stat-label">Quiz</span>
                         </div>
                     </div>
-                        <RouterLink to="/learn-english/tu-vung-tieng-anh/chu-de">
-                             <button class="card-button" data-aos="fade-left" data-aos-duration="1000">
+                        <RouterLink to="/learn-english/tu-vung-tieng-anh/chu-de" >
+                             <button class="card-button" >
                       
                                 Học Ngay
                       
@@ -93,8 +93,8 @@
                             <span class="stat-label">Quiz</span>
                         </div>
                     </div>
-                   <RouterLink to="/learn-english/tu-vung-tieng-anh/chu-de">
-                             <button class="card-button" data-aos="fade-left" data-aos-duration="1000">
+                   <RouterLink to="/learn-english/tu-vung-tieng-anh/chu-de" >
+                             <button class="card-button" >
                       
                                 Học Ngay
                       
@@ -144,8 +144,8 @@
                             <span class="stat-label">Quiz</span>
                         </div>
                     </div>
-                    <RouterLink to="/learn-english/tu-vung-tieng-anh/chu-de">
-                             <button class="card-button" data-aos="fade-left" data-aos-duration="1000">
+                   <RouterLink to="/learn-english/tu-vung-tieng-anh/chu-de" >
+                             <button class="card-button" >
                       
                                 Học Ngay
                       
@@ -195,8 +195,8 @@
                             <span class="stat-label">Quiz</span>
                         </div>
                     </div>
-                  <RouterLink to="/learn-english/tu-vung-tieng-anh/chu-de">
-                             <button class="card-button" data-aos="fade-left" data-aos-duration="1000">
+                  <RouterLink to="/learn-english/tu-vung-tieng-anh/chu-de" >
+                             <button class="card-button" >
                       
                                 Học Ngay
                       
@@ -230,6 +230,7 @@ export default{
 
 .cards-grid{
     margin-bottom: 50px;
+   
 }
 .topic-card {
     background:var(--accent-color);
@@ -241,7 +242,7 @@ export default{
     cursor: pointer;
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    min-height: 400px;
+    height: 600px;
 
 }
 
@@ -438,13 +439,13 @@ export default{
 }
 
 .card-button {
-    width: 30%;
+    width: 15%;
     background: #dd0182;
     color: white;
     border: none;
-    padding: 16px 25px;
+    padding: 10px;
     border-radius: 25px;
-    font-size: 1.05rem;
+    font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -481,6 +482,9 @@ export default{
         border: 10px solid none;
         border-radius: 20px; 
 }
+.topic-card{
+    height: 680px;
+}
 .topic-card::before {
     content: '';
     position: absolute;
@@ -498,6 +502,17 @@ export default{
     /* border-top: 5px solid #4a33d9; */
     border-top-left-radius:20px ;
     border-top-right-radius:20px ;
+    
+}
+.card-title{
+    font-size: 20px;
+}
+.card-subtitle{
+    font-size: 14px;
+}
+.card-description{
+    font-size: 15px;
+    
 }
 
  .topic-card {
@@ -520,8 +535,36 @@ export default{
     }
 
     .card-button {
-   width: 200px;
+        width: 120px;
+        font-size: 12px;
 
-}
+        }
+
+      
+    .vocabulary-preview{
+        margin-bottom: 0px;
+        
+    }
+    .vocab-list{
+        gap: 10px;
+        grid-template-columns: repeat(2,1fr);
+    }
+    .vocab-item{
+        width: 100px;
+       margin: 0 auto;
+       font-size: 13px;
+    }
+
+    .vocabulary-preview h4{
+        display: block;
+    }
+
+    .stat-number{
+        font-size: 20px;
+    }
+
+     .stat-label{
+        font-size: 12px;
+    }
 }
 </style>

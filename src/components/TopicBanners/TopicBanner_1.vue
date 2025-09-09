@@ -222,6 +222,10 @@ export default{
     height: 50;
 }
 @media(max-width:768px){
+    .Banner-topic-container{
+        width: 350px;
+        margin: 0 auto;
+    }
     .title-wrap{
         width: 300px;
         margin: 0 auto;
@@ -234,6 +238,7 @@ export default{
         margin: 0 auto;
     }
 
+ 
     .image-cer{
         width: 100%;
         height: 100%;
@@ -261,7 +266,7 @@ export default{
   
      .card-inner {
         margin-bottom: 40px;
-        width: 31%;
+        width: 32%;
         margin-left: 20px;
     }
     
@@ -271,6 +276,10 @@ export default{
         border-bottom-left-radius: 40px;
         border-bottom-right-radius: 40px;
 
+    }
+
+    .second-banner{
+        width: 1000px;
     }
 
     

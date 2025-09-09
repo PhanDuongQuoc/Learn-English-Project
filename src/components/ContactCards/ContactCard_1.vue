@@ -267,7 +267,7 @@ export default{
     }
 
     .contact-form-container{
-        width: 35%;
+        width: 33%;
     }
 
 

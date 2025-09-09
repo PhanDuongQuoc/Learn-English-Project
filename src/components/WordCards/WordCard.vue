@@ -1,19 +1,22 @@
 <template>
         <div class="vocab-card fade-in" data-aos="fade-left" data-aos-duration="20000" >
-            <div class="vocab-word" data-aos="fade-left" data-aos-duration="20000">{{ Words.word }}</div>
+            <RouterLink class="detail-card-watch" to="/learn-english/tu-vung-tieng-anh/chu-de/chi-tiet-tu-vung">
+                <i class="fa-solid fa-circle-info"></i>
+            </RouterLink>
+            <div class="vocab-word" data-aos="fade-left" data-aos-duration="20000">
+                {{ Words.word }}
+            </div>
             <div class="vocab-pronunciation" data-aos="fade-left" data-aos-duration="20000">{{Words.pronunciation}}</div>
-            <button class="audio-btn" data-aos="fade-left" data-aos-duration="20000" @click="speakWord"><i class="fa-solid fa-volume-low"></i></button>
+            <button class="audio-btn" data-aos="fade-left" data-aos-duration="20000" @click="speakWord"><i class="fa-solid fa-volume-high"></i></button>
         </div>
-
-
-            
 
 </template>
 <script>
+import { RouterLink } from 'vue-router'
 export default{
     name:'AppWordcard',
     components:{
-        
+        RouterLink
     },
     props: {
         Words: {
@@ -53,7 +56,22 @@ export default{
             position: relative;
             overflow: hidden;
             margin: 0 auto;
+            position: relative;
         
+        }
+        .fa-circle-info{
+            font-size: 15px;
+            color: #dd0182;
+            position: absolute;
+            top:8px;
+            right: 8px;
+
+        }
+
+        .fa-circle-info:hover{
+            color: white;
+  
+
         }
 
         .vocab-card:hover {
@@ -142,5 +160,15 @@ export default{
          .vocab-pronunciation{
             font-size: 0.75rem;
          }
+
+          .audio-btn{
+            width: 25px;
+            height: 25px;
+          }
+          .fa-volume-high{
+            font-size: 12px;
+            display: block;
+          }
+       
 }
 </style>

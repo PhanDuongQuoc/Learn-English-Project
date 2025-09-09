@@ -1,58 +1,60 @@
 <template>
-    <div class="Banner_6">
-        <Banner_6 :ContentBanner="contentData_10"/>
-    </div>
-    <!-- <div class="Banner_1">
-        <Banner_1/>
-    </div> -->
-    <br>
-  
-    <div data-aos="fade-left" data-aos-duration="4000" class="Layout_1">
-        <LayoutIntroduce_1 :Content="contentData_1"/>
-    </div>
-    <br>
-    <div data-aos="fade-right" data-aos-duration="4000" class="Layout_2">
-        <LayoutIntroduce_2 :Content="contentData_2"/>
-    </div>
-    <div data-aos="fade-left" data-aos-duration="4000" class="Layout_3">
-        <LayoutIntroduce_1 :Content="contentData_3"/>
-    </div>
-    <div data-aos="fade-right" data-aos-duration="4000" class="Layout_4">
-         <LayoutIntroduce_2 :Content="contentData_4"/>
-    </div>
-    <div class="Banner_2">
-        <Banner_2/>
-    </div>
-    <div data-aos="fade-left" data-aos-duration="4000" class="Banner_3">
-        <Banner_3 :ContentBanner="contentData_5"/>
-    </div>
-    <div data-aos="fade-right" data-aos-duration="4000" class="Layout_3">
-        <LayoutIntroduce_3 :Content="contentData_6"/>
-    </div>
-    <br>
-    <div data-aos="fade-left" data-aos-duration="4000" class="layout_4">
-        <LayoutIntroduce_4 :Content="contentData_7"/>
-    </div>
-    <div data-aos="fade-right" data-aos-duration="4000" class="Layout_5">
-        <LayoutIntroduce_3 styleWidth="600px" :Content="contentData_8"/>
-    </div>
-    <br/>
-    <div data-aos="fade-left" data-aos-duration="4000" class="layout_6">
-        <LayoutIntroduce_4 styleWidth="450px" :Content="contentData_9"/>
-    </div>
-    <br>
-    <div  data-aos="fade-right" data-aos-duration="4000" class="banner-topic_1">
-        <TopicBanner_1/>
-    </div>
-    <br>
-    <div class="Contact-card">
-        <div data-aos="fade-left" data-aos-duration="4000" class="contactcard">
-            <ContactCard_1/>
+    <div class="home-container">
+        <div class="Banner_6">
+            <Banner_6 :ContentBanner="contentData_10"/>
         </div>
-    </div>
+        <!-- <div class="Banner_1">
+            <Banner_1/>
+        </div> -->
+        <br>
     
-    <div data-aos="zoom-out" data-aos-duration="4000" class="Banner_4">
-        <Banner_4/>
+        <div data-aos="fade-left" data-aos-duration="4000" class="Layout_1">
+            <LayoutIntroduce_1 :Content="contentData_1"/>
+        </div>
+        <br>
+        <div data-aos="fade-right" data-aos-duration="4000" class="Layout_2">
+            <LayoutIntroduce_2 :Content="contentData_2"/>
+        </div>
+        <div data-aos="fade-left" data-aos-duration="4000" class="Layout_3">
+            <LayoutIntroduce_1 :Content="contentData_3"/>
+        </div>
+        <div data-aos="fade-right" data-aos-duration="4000" class="Layout_4">
+            <LayoutIntroduce_2 :Content="contentData_4"/>
+        </div>
+        <div class="Banner_2">
+            <Banner_2/>
+        </div>
+        <div data-aos="fade-left" data-aos-duration="4000" class="Banner_3">
+            <Banner_3 :ContentBanner="contentData_5"/>
+        </div>
+        <div data-aos="fade-right" data-aos-duration="4000" class="Layout_3">
+            <LayoutIntroduce_3 :Content="contentData_6"/>
+        </div>
+        <br>
+        <div data-aos="fade-left" data-aos-duration="4000" class="layout_4">
+            <LayoutIntroduce_4 :Content="contentData_7"/>
+        </div>
+        <div data-aos="fade-right" data-aos-duration="4000" class="Layout_5">
+            <LayoutIntroduce_3 styleWidth="600px" :Content="contentData_8"/>
+        </div>
+        <br/>
+        <div data-aos="fade-left" data-aos-duration="4000" class="layout_6">
+            <LayoutIntroduce_4 styleWidth="450px" :Content="contentData_9"/>
+        </div>
+        <br>
+        <div data-aos="fade-right" data-aos-duration="4000" class="banner-topic_1">
+            <TopicBanner_1/>
+        </div>
+        <br>
+        <div class="Contact-card">
+            <div data-aos="fade-left" data-aos-duration="4000" class="contactcard">
+                <ContactCard_1/>
+            </div>
+        </div>
+        
+        <div data-aos="zoom-out" data-aos-duration="4000" class="Banner_4">
+            <Banner_4/>
+        </div>
     </div>
 
 </template>
@@ -146,5 +148,10 @@ export default{
     .Banner_6{
         margin-top: 150px;
     }
+
+
+
+
+    
     
 </style>
