@@ -13,7 +13,7 @@ const routes = [
 
 ]
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/Learn-English-Project/'),
   routes,
  scrollBehavior() {
      return { left: 0, top: 0,right:0 }
