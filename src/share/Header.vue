@@ -37,7 +37,7 @@
     <SearchCard v-model="showDialog_Search" data-aos="zoom-in" data-aos-duration="10000"/>
     <MapCard v-model="showDialog_Map" data-aos="zoom-in" data-aos-duration="10000"></MapCard>
     <nav class="navbar navbar-expand-lg main-header" :class="{ show: isMenuOpen_2 }">
-        <div class="container" data-aos="fade-left" data-aos-duration="4000">
+        <div class="container container-header" data-aos="fade-left" data-aos-duration="4000">
             <a class="logo" href="#">
                 <div class="logo-img">
                     <img class="logo-main" :class="{ show: isMenuOpen_2 }" src="../assets/image/logo-google.png" alt="">
@@ -281,7 +281,10 @@ export default{
             left: 0;
             right: 0;
         }
-
+        .container-header{
+            
+        
+        }
         .logo-main-replace{
             width: 30px;
             height: 30px;
@@ -382,7 +385,7 @@ export default{
             align-items: center;
             text-decoration: none;
             color: white;
-            margin-left: 40px;
+            /* margin-left: 40px; */
         }
         .arrow-logo{
             margin-right: 10px;
@@ -407,7 +410,7 @@ export default{
         .navbar-nav .nav-link {
             color: white !important;
             font-weight: 500;
-            margin: 0 15px;
+            margin: 0 12px;
             transition: all 0.3s ease;
             position: relative;
             
@@ -520,6 +523,7 @@ export default{
 
          
         }
+        
         @media (max-width:768px){
              .cta-button {
                 background: #dd0182;
