@@ -250,6 +250,9 @@ export default{
     .container-word-message{
         width: 90%;
     }
+    .container-word-level{
+        width: 90%;
+    }
     .content-notice{
         font-size: 12px;
         display: inline-flex;
