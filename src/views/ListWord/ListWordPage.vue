@@ -44,13 +44,13 @@
         
 
         <div class="pagination-container">
-        <button
-            class="page-btn"
-            :disabled="currentPage === 1"
-            @click="backCurrentPage"
-        >
-            <i class="fa-solid fa-chevron-left icon-pagination"></i>
-        </button>
+            <button
+                class="page-btn"
+                :disabled="currentPage === 1"
+                @click="backCurrentPage"
+            >
+                <i class="fa-solid fa-chevron-left icon-pagination"></i>
+            </button>
 
         <span class="page-info">
              {{ currentPage }} - {{ totalPages }}
@@ -141,7 +141,7 @@ export default{
             return this.currentPage++;
         },
         backCurrentPage(){
-            return this,this.currentPage--;
+            return this.currentPage--;
         }
     }
   

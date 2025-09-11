@@ -195,7 +195,7 @@ export default{
         padding-top: 10px;
     }
     .arrow-right {
-        margin-left: 140px;
+        margin-left: 115px;
     }
     .small-box img {
         width: 100%;

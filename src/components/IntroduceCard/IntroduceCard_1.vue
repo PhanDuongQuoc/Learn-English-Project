@@ -93,8 +93,13 @@ export default{
   border-left: 10px solid #dd0182;
   border-right: 10px solid #4a33d9;
   border-bottom-left-radius: 50%;
-   border-bottom-right-radius: 50%;
-   
+  border-bottom-right-radius: 50%;
+  transition: transform 0.6s;
+
+}
+
+.card:hover{
+    transform: rotate(-5deg);
 }
 /* .card-1{
      background-color: #E6F0F2;

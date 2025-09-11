@@ -51,6 +51,32 @@
                 <ContactCard_1/>
             </div>
         </div>
+        <div class="Testimonial-card" data-aos="fade-right" data-aos-duration="4000">
+            <button class="page-btn btn-left" @click="backPage()" :disabled="currentPage===1"
+                data-aos="fade-right" data-aos-duration="4000"
+            >
+                <i class="fa-solid fa-chevron-left icon-pagination"></i>
+            </button>
+            <div class="title-wrap">
+                <Title_1 :Title="title"/>
+            </div>
+     
+            <section class="py-5 py-xl-8 container-testimonial-card">
+                <div class="container">
+                    <div class="row gy-4 gy-md-0 gx-xxl-5">
+                        <TestimonialCard_1
+                         v-for="(item,index) in paginationTestiminials" 
+                            :key="index"
+                            :Testiminials="item"/>
+                    </div>
+                </div>
+            </section>
+              <button class="page-btn btn-right" @click="nextPage()" :disabled="currentPage===totalPage"
+                data-aos="fade-left" data-aos-duration="4000"
+              >
+                <i class="fa-solid fa-chevron-right icon-pagination"></i>
+            </button>
+        </div>
         
         <div data-aos="zoom-out" data-aos-duration="4000" class="Banner_4">
             <Banner_4/>
@@ -71,11 +97,16 @@ import Banner_4 from '@/components/Banners/Banner_4.vue';
 import Banner_6 from '@/components/Banners/Banner_6.vue';
 import TopicBanner_1 from '@/components/TopicBanners/TopicBanner_1.vue';
 import ContactCard_1 from '@/components/ContactCards/ContactCard_1.vue';
+import TestimonialCard_1 from '@/components/Testimonials/TestimonialCard_1.vue';
+import Title_1 from '@/components/TitleCard/Title_1.vue';
+
 export default{
     name:'HomePage',
     components:{ Banner_2,Banner_3, Banner_4,Banner_6,
                 LayoutIntroduce_1,LayoutIntroduce_2,
-                LayoutIntroduce_3,LayoutIntroduce_4,TopicBanner_1,ContactCard_1},
+                LayoutIntroduce_3,LayoutIntroduce_4,
+                TopicBanner_1,ContactCard_1,TestimonialCard_1,
+                Title_1},
     data() {
     return {
         contentData_1: {
@@ -138,9 +169,92 @@ export default{
                   'https://img-cdn.inc.com/image/upload/f_webp,c_fit,w_1920,q_auto/images/panoramic/getty_1395144844_h8h2eo.jpg',
             ]
         },
+        title:{
+            title:'Đánh Giá Của Cộng Đồng'
+        },
+
+        itemTestiminials:[
+                {
+                    image:'https://media.vov.vn/sites/default/files/styles/large/public/2023-09/rose-1076012.jpg',
+                    content:'Tôi thấy việc học từ vựng tiếng Anh theo thẻ từ thật sự hiệu quả. Mỗi ngày tôi đều học được thêm vài từ mới và nhớ lâu hơn rất nhiều.',
+                    name:'Rose Nguyễn', level:'VIP', major:'Sinh viên'
+                },
+                {
+                    image:'https://vcdn1-giaitri.vnecdn.net/2023/04/30/david-beckham-jpeg-9988-1682789339.jpg?w=460&h=0&q=100&dpr=2&fit=crop&s=g3EpmDJp1IKQxOgIRmQkBQ',
+                    content:'Ứng dụng này giúp tôi luyện tập từ vựng tiếng Anh dễ dàng hơn. Tôi có thể vừa học vừa ôn tập mỗi ngày mà không bị chán.',
+                    name:'David Trần', level:'Basic', major:'Chủ tịch'
+                },
+                {
+                    image:'https://musicfeeds.com.au/wp-content/uploads/sites/7/justin-bieber-2016-press-pic-supplied.jpg',
+                    content:'Nhờ có phương pháp học từ vựng bằng ví dụ và ngữ cảnh, tôi thấy mình ghi nhớ nhanh hơn và áp dụng vào giao tiếp tốt hơn.',
+                    name:'Phạm Justin', level:'Standard', major:'Nhạc sỹ'
+                },
+                {
+                    image:'https://kenh14cdn.com/2020/6/1/890418006244950681088149165964086477617723n-1590989017416651141586.jpg',
+                    content:'Nhờ có phương pháp học từ vựng bằng ví dụ và ngữ cảnh, tôi thấy mình ghi nhớ nhanh hơn và áp dụng vào giao tiếp tốt hơn.',
+                    name:'Maria Phạm', level:'VIP', major:'Diễn viên'
+                },
+                {
+                    image:'https://media.vietnamplus.vn/images/42139c4ac0f1efdabeea97c7f4c534570a01cacb3a62c7fe1fb81643767844eefad65e27574ffa7784e526c1f5f7e26e/taylor-swift-0901.jpg',
+                    content:'Học từ mới qua flashcard thật sự giúp tôi tiết kiệm thời gian và có động lực học mỗi ngày.',
+                    name:'Taylor Lê', level:'Premium', major:'Ca sĩ'
+                },
+                {
+                    image:'https://vcdn1-vnexpress.vnecdn.net/2024/05/20/1753-fix-hi-res-1716200842-171-1256-6470-1716201058.png?w=500&h=300&q=100&dpr=1&fit=crop&s=TGzGkB0fTNVtMYnZbY-bdA',
+                    content:'Ứng dụng này như một người bạn đồng hành giúp tôi rèn luyện vốn từ vựng đều đặn.',
+                    name:'Minh Elon', level:'VIP', major:'Doanh nhân'
+                },
+                {
+                    image:'https://vcdn1-vnexpress.vnecdn.net/2024/02/08/intro1706819692-1707406630-170-6563-2076-1707408165.jpg?w=500&h=300&q=100&dpr=1&fit=crop&s=xAIvX5I1q7gb2CbCR7KYZw',
+                    content:'Nhờ áp dụng cách học từ vựng có ví dụ minh họa, tôi thấy dễ nhớ và học vui hơn.',
+                    name:'Emma Nguyễn', level:'Standard', major:'Sinh viên'
+                },
+                {
+                    image:'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=600',
+                    content:'Tôi có thể học từ vựng mọi lúc mọi nơi, đặc biệt là khi đi làm về trên xe bus.',
+                    name:'Trần Hồng', level:'Basic', major:'Nhân viên văn phòng'
+                },
+                {
+                    image:'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600',
+                    content:'Tính năng nhắc nhở hằng ngày giúp tôi duy trì thói quen học tập rất hiệu quả.',
+                    name:'Lan Anh', level:'VIP', major:'Giáo viên'
+                },
+                {
+                    image:'https://media.vov.vn/sites/default/files/styles/large/public/2022-03/1_2.png.jpg',
+                    content:'Ứng dụng rất dễ sử dụng, phù hợp với cả người mới bắt đầu học tiếng Anh.',
+                    name:'Hoàng Nam', level:'Premium', major:'Lập trình viên'
+                }
+                ],
+
+
+        currentPage: 1,
+        itemsPerPage: 3,
+
+     
 
     }
+     
+  },
+  computed:{
+    totalPage(){
+        return Math.ceil(this.itemTestiminials.length/this.itemsPerPage)
+    },
+    paginationTestiminials(){
+        const start = (this.currentPage-1)*this.itemsPerPage;
+        const end  = start + this.itemsPerPage;
+        
+        return this.itemTestiminials.slice(start,end)
+    }
+  },
+  methods:{
+    nextPage(){
+        return this.currentPage++;
+    },
+    backPage(){
+        return this.currentPage--;
+    }
   }
+
 }
 </script>
 
@@ -149,6 +263,90 @@ export default{
         margin-top: 150px;
     }
 
+    .container-testimonial-card{
+    
+        width: 1200px;
+        margin: 0 auto;
+       
+    
+       
+    }
+    .page-btn{
+        background-color: #4a33d9;
+        border-radius: 50%;
+        padding: 2px 8px;
+        border: 1px solid #4a33d9;
+        width: 50px;
+        height: 50px;
+        z-index: 999;
+
+    }
+    .page-btn:hover{
+        background-color: #dd0182;
+        border: 1px solid #dd0182;
+        
+    }
+    .icon-pagination{
+        color:white;
+        font-weight: bold;
+    }
+    .Testimonial-card{
+        position: relative;
+        padding-bottom: 20px;
+    }
+    .btn-left{
+        position: absolute;
+        left: 8%;
+        top: 50%;
+        
+       
+    }
+
+      .btn-right{
+        position: absolute;
+        right: 8%;
+        top: 50%;
+        
+       
+    }
+
+    @media(max-width:768px){
+         .container-testimonial-card{
+            width: 100%;
+            margin: 0 auto;
+            
+        }
+
+        .page-btn{
+            background-color: #4a33d9;
+            border-radius: 50%;
+            padding: 2px 8px;
+            border: 1px solid #4a33d9;
+            width: 30px;
+            height: 30px;
+            z-index: 999;
+
+        }
+
+
+          .btn-left{
+
+            left: 2%;
+          
+            
+        
+        }
+
+      .btn-right{
+
+            right: 2%;
+        
+            
+        
+        }
+        
+    
+    }
 
 
 
