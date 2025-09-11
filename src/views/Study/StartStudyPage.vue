@@ -8,11 +8,27 @@
             <p data-aos="fade-left" data-aos-duration="8000" class="content-notice">Chú ý: bạn được học tối đa 20 từ mới một ngày. Đây là lượng từ phù hợp để bạn có thể học hiệu quả.</p>
         </div>
         <br>
-        <div class="container-word-detail" data-aos="fade-left" data-aos-duration="8000">
-            <WordDetailCard/>
+        <div class="container-word-detail" data-aos="fade-left" data-aos-duration="8000" v-if="closecardword">
+            <StudyCard_1
+                 v-for="(item,index) in paginatedWords" 
+                :key="index"
+                :Words="item"
+            />
         </div>
+        <div 
+            class="notice-message-complete container-word-message alert alert-success text-center position-relative" 
+            v-if="cardmessage"
+            role="alert"
+            >
+            <div>
+                <i class="fa-solid fa-circle-check fa-3x text-success mb-3"></i>
+                <h3 class="fw-bold">Chúc mừng!</h3>
+                <p class="mb-0">Bạn đã hoàn thành bài học</p>
+            </div>
+
+            </div>
         <br>
-        <!-- <div class="container-word-level" data-aos="fade-left" data-aos-duration="2000">
+        <div class="container-word-level" v-if="closecardword">
             <div class="icon-easy icon-list" data-aos="fade-left" data-aos-duration="2000">
                 <i class="fa-solid fa-face-smile icon-click"></i>
                 <p class="title-level">Dễ</p>
@@ -29,13 +45,13 @@
             </div>
 
           <div class="icon-next icon-list" data-aos="fade-left" data-aos-duration="2000">
-               <i class="fa-solid fa-forward icon-click"></i>
+               <i class="fa-solid fa-forward icon-click" @click="nextCard()"></i>
        
-            <p class="title-level title-next">
-               Đã biết, loại khỏi danh sách ôn tập
+            <p class="title-level">
+               Tiếp theo
             </p>
           </div>
-        </div> -->
+        </div>
         <br>
         <div class="back-page-before">
             <RouterLink to="/learn-english/tu-vung-tieng-anh/chu-de" >
@@ -53,18 +69,57 @@
 </template>
 <script>
 import Title_2 from '@/components/TitleCard/Title_2.vue';
-import WordDetailCard from '@/components/WordDetail/WordDetailCard.vue';
-
+import StudyCard_1 from '@/components/Studys/StudyCard_1.vue';
+import WordService from '@/services/WordServices/WordService';
 export default{
     name:'WordDetailPage',
     components:{
-        Title_2,WordDetailCard
+        Title_2,StudyCard_1
     },
     data(){
         return{
-            
+            currentPage:1,
+            itemsPerPage:1,
+            cardmessage:false,
+            closecardword:true,
         }
     },
+    created(){
+        console.log({data:this.wordlist.Words})
+    },
+    computed:{
+        wordlist(){
+            const wordservice = new WordService()
+            return wordservice.LoadData()
+        },
+           totalPages() {
+           
+            return Math.ceil(this.wordlist.length / this.itemsPerPage);
+            
+        },
+          paginatedWords() {
+            const start = (this.currentPage - 1) * this.itemsPerPage;
+            console.log({currentPage:this.currentpage})
+            const end = start + this.itemsPerPage;
+            return this.wordlist.slice(start, end);
+        },
+        
+    },
+    methods:{
+         nextCard() {
+                if (this.currentPage === this.totalPages) {
+                    this.cardmessage=!this.cardmessage
+                    this.closecardword=!this.closecardword
+                } else {
+                    this.currentPage++;
+                }
+            },
+            speakWord(){
+                
+            }
+           
+       
+    }
 
 
   
@@ -101,7 +156,7 @@ export default{
 .container-word-level{
     width:800px;
     height: 100px;
-     background-color: white;
+    background-color: white;
     border: 1px solid #d4d8db;
     box-shadow: 10px 15px 10px rgba(15, 15, 15, 0.1);
     display: flex;
@@ -111,6 +166,20 @@ export default{
     border-radius: 20px;
     padding-top: 15px;
    
+}
+
+.container-word-message{
+     width:800px;
+    height: 400px;
+     background-color: white;
+    border: 1px solid #d4d8db;
+    box-shadow: 10px 15px 10px rgba(15, 15, 15, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding-top: 15px;
 }
 .content-notice{
     height: 100%;
@@ -175,6 +244,10 @@ export default{
     }
 
     .message-card-detail{
+        width: 90%;
+    }
+
+    .container-word-message{
         width: 90%;
     }
     .content-notice{

@@ -4,15 +4,15 @@
 
         <div v-if="showEnglish" key="en" class="word-detail">
             <div class="word-detail-content-1">
-                <h1>{{ currentWord.word }} <i class="fa-solid fa-volume-high" @click="speakWord"></i></h1>
-                <p>(noun) {{ currentWord.pronunciation }}</p>
+                <h1>{{Words.word}}<i class="fa-solid fa-volume-high" @click="speakWord"></i></h1>
+                <p>{{ Words.pronunciation }}</p>
             </div>
         </div>
 
         <div v-else key="vi" class="word-detail-2">
             <div class="word-detail-content-2">
-                <p><b>Định nghĩa:</b> {{ currentWord.meaning }}</p>
-                <p><b>Ví dụ:</b> {{ currentWord.example }}</p>
+                <p><b>Định nghĩa:</b> {{Words.meaning}}</p>
+                <p><b>Ví dụ:</b> {{Words.example}}</p>
             </div>
         </div>
 
@@ -23,9 +23,9 @@
 </template>
 <script>
 import WordService from '@/services/WordServices/WordService'
-import { useRoute } from 'vue-router'
+// import { useRoute } from 'vue-router'
 export default{
-    name:'AppWordDetailCard',
+    name:'AppStudyCard',
     components:{
 
     },
@@ -33,35 +33,41 @@ export default{
         
         return{
             showEnglish:true,
-            currentWord:null
+         
             
         }
     },
-    created(){
-       this.showdetail()
+     props: {
+        Words: {
+            type: Object,
+            required: true
+            }
+    },
+    // created(){
+    //    this.showdetail()
         
-    },
-    computed:{
-        wordlist(){
-            const wordservice = new WordService()
-            return wordservice.LoadData()
-        }
-    },
+    // },
+    // computed:{
+    //     wordlist(){
+    //         const wordservice = new WordService()
+    //         return wordservice.LoadData()
+    //     }
+    // },
     methods:{
         functionShowMean(){
             this.showEnglish = !this.showEnglish
 
         },
         speakWord(){
-            const speakWord = this.currentWord.word
+            const speakWord = this.Words.word
             const wordservice = new WordService()
             wordservice.speakword(speakWord);
         },
-        showdetail(){
-            const route = useRoute()
-            const wordId = route.params.id
-            this.currentWord  = this.wordlist.find(s=>s.id == wordId)
-        }
+        // showdetail(){
+        //     const route = useRoute()
+        //     const wordId = route.params.id
+        //     this.currentWord  = this.wordlist.find(s=>s.id == wordId)
+        // }
     }
 }
 </script>

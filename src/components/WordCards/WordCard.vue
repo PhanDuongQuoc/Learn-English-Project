@@ -1,6 +1,6 @@
 <template>
         <div class="vocab-card fade-in" data-aos="fade-left" data-aos-duration="20000" >
-            <RouterLink class="detail-card-watch" to="/learn-english/tu-vung-tieng-anh/chu-de/chi-tiet-tu-vung">
+            <RouterLink class="detail-card-watch" :to="`/learn-english/tu-vung-tieng-anh/chu-de/chi-tiet-tu-vung/${Words.id}`">
                 <i class="fa-solid fa-circle-info"></i>
             </RouterLink>
             <div class="vocab-word" data-aos="fade-left" data-aos-duration="20000">
@@ -13,6 +13,7 @@
 </template>
 <script>
 import { RouterLink } from 'vue-router'
+import WordService from '@/services/WordServices/WordService'
 export default{
     name:'AppWordcard',
     components:{
@@ -26,13 +27,9 @@ export default{
     },
     methods:{
         speakWord(){
-            const wordSpeak = this.Words.word
-            if(!wordSpeak){
-                return
-            }
-            const speak = new SpeechSynthesisUtterance(wordSpeak)
-            speak.lang = "en-US"
-            speechSynthesis.speak(speak)
+            const speak  = this.Words.word
+            const wordservice = new WordService()
+            wordservice.speakword(speak)
         }
     }
     

@@ -1,7 +1,7 @@
 <template>
     <div class="word-list-container">
         <div class="title-word-page"  data-aos="fade-left" data-aos-duration="8000">
-            <Title_2 :Title="title"/>
+            <Title_3 :Title="titlecontent"/>
         </div>
          <div class="search-word-page"  data-aos="fade-right" data-aos-duration="8000">
             <div class="search-word">
@@ -12,10 +12,13 @@
         <br>
         <div class="header-content-container" data-aos="fade-right" data-aos-duration="8000"> 
             <div class="start-study-button">
-                <button class="start-button">
-                    <i class="fa-solid fa-play start-solid start-fa-solid"></i>
-                    Bất đầu học
-                </button>
+                <RouterLink to="/learn-english/tu-vung-tieng-anh/chu-de/hoc-trai-nghiem">
+
+                    <button class="start-button">
+                        <i class="fa-solid fa-play start-solid start-fa-solid"></i>
+                        Bất đầu học
+                    </button>
+                </RouterLink>
 
             </div>
             <div class="container-wrap">
@@ -81,49 +84,32 @@
     </div>
 </template>
 <script>
-import Title_2 from '@/components/TitleCard/Title_2.vue';
+import Title_3 from '@/components/TitleCard/Title_3.vue';
 import SearchWordCard from '@/components/Searchs/SearchWordCard.vue';
 import WordCard from '@/components/WordCards/WordCard.vue';
+import WordService from '@/services/WordServices/WordService';
 import { RouterLink } from 'vue-router';
 export default{
     name:'AppListWordPage',
     components:{
-        Title_2,SearchWordCard,WordCard, RouterLink
+        Title_3,SearchWordCard,WordCard, RouterLink
     },
     data(){
         return{
             title:{title:'Chủ đề #',content:'Khám phá thế giới giao thông vận tải với từ vựng về các phương tiện, quy tắc giao thông và cách hỏi đường.'},
-           wordlist: [
-            { word: "apple", pronunciation: "/ˈæp.əl/" },
-            { word: "banana", pronunciation: "/bəˈnɑː.nə/" },
-            { word: "orange", pronunciation: "/ˈɒr.ɪndʒ/" },
-            { word: "grape", pronunciation: "/ɡreɪp/" },
-            { word: "mango", pronunciation: "/ˈmæŋ.ɡoʊ/" },
-            { word: "pear", pronunciation: "/per/" },
-            { word: "peach", pronunciation: "/piːtʃ/" },
-            { word: "strawberry", pronunciation: "/ˈstrɔːˌber.i/" },
-            { word: "watermelon", pronunciation: "/ˈwɑː.t̬ɚˌmel.ən/" },
-            { word: "pineapple", pronunciation: "/ˈpaɪnˌæp.əl/" },
-            { word: "dog", pronunciation: "/dɑːɡ/" },
-            { word: "cat", pronunciation: "/kæt/" },
-            { word: "bird", pronunciation: "/bɝːd/" },
-            { word: "fish", pronunciation: "/fɪʃ/" },
-            { word: "elephant", pronunciation: "/ˈel.ə.fənt/" },
-            { word: "tiger", pronunciation: "/ˈtaɪ.ɡɚ/" },
-            { word: "lion", pronunciation: "/ˈlaɪ.ən/" },
-            { word: "car", pronunciation: "/kɑːr/" },
-            { word: "bus", pronunciation: "/bʌs/" },
-            { word: "bicycle", pronunciation: "/ˈbaɪ.sɪ.kəl/" }
-            ],
 
             currentPage: 1,
             itemsPerPage: 8,
-
+         
+            titlecontent:{title:'Chủ đề #',content:'Từ vựng Tiếng Anh giao tiếp'}
+      
         }
     },
-
      computed: {
-        
+        wordlist(){
+            const wordService = new WordService()
+            return wordService.LoadData()
+        },
         totalPages() {
            
             return Math.ceil(this.wordlist.length / this.itemsPerPage);
@@ -131,7 +117,6 @@ export default{
         },
         paginatedWords() {
             const start = (this.currentPage - 1) * this.itemsPerPage;
-            console.log({current:this.currentPage,items:this.itemsPerPage})
             const end = start + this.itemsPerPage;
             return this.wordlist.slice(start, end);
         },
