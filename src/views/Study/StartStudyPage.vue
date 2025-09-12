@@ -8,43 +8,61 @@
             <p data-aos="fade-left" data-aos-duration="8000" class="content-notice">Chú ý: bạn được học tối đa 20 từ mới một ngày. Đây là lượng từ phù hợp để bạn có thể học hiệu quả.</p>
         </div>
         <br>
+        <div class="container-progress">
+            <i class="fa-solid fa-flag"></i>
+            <i class="fa-solid fa-bullseye"></i>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar" :style="{ width: progressPercent + '%' }">
+                              <i class="fa-solid fa-rocket plane-icon" :style="{ left: progressPercent + '%' }"></i>
+                </div>
+      
+            </div>
+            
+        </div>
+        <br>
         <div class="container-word-detail" data-aos="fade-left" data-aos-duration="8000" v-if="closecardword">
             <StudyCard_1
                  v-for="(item,index) in paginatedWords" 
                 :key="index"
                 :Words="item"
+                :showFlash="showEnglish"
+                 @update:showEnglish="handleShowEnglish"
             />
         </div>
-        <div 
-            class="notice-message-complete container-word-message alert alert-success text-center position-relative" 
-            v-if="cardmessage"
-            role="alert"
-            >
-            <div>
-                <i class="fa-solid fa-circle-check fa-3x text-success mb-3"></i>
-                <h3 class="fw-bold">Chúc mừng!</h3>
-                <p class="mb-0">Bạn đã hoàn thành bài học</p>
-            </div>
+         <div v-if="cardmessage" class="modal-overlay">
 
-            </div>
+             <div class="notice-message-complete container-word-message alert alert-success text-center position-relative modal-overlay"
+                data-aos="fade-right" data-aos-duration="2000"
+             >
+                 <div>
+                     <i class="fa-solid fa-circle-check fa-3x text-success mb-3"   data-aos="fade-right" data-aos-duration="2000"></i>
+                     <h3 class="fw-bold title-bold"   data-aos="fade-right" data-aos-duration="2000">Chúc mừng!</h3>
+                     <p class="mb-0"   data-aos="fade-right" data-aos-duration="2000">Bạn đã hoàn thành bài học</p>
+                 </div>
+                 <div class="button-close" @click="closeModal">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                 </div>
+             </div>
+         </div>
         <br>
         <div class="container-word-level" v-if="closecardword">
-            <div class="icon-easy icon-list" data-aos="fade-left" data-aos-duration="2000">
+            <div class="icon-easy icon-list" >
                 <i class="fa-solid fa-face-smile icon-click"></i>
                 <p class="title-level">Dễ</p>
             </div>
 
-            <div class="icon-midlle icon-list" data-aos="fade-left" data-aos-duration="2000">
+            <div class="icon-midlle icon-list" >
                 <i class="fa-solid fa-face-meh icon-click"></i>
                 <p class="title-level">Trung bình</p>
             </div>
 
-            <div class="icon-hard icon-list" data-aos="fade-left" data-aos-duration="2000">
+            <div class="icon-hard icon-list" >
                 <i class="fa-solid fa-face-frown icon-click"></i>
                 <p class="title-level">Khó</p>
             </div>
 
-          <div class="icon-next icon-list" data-aos="fade-left" data-aos-duration="2000">
+          <div class="icon-next icon-list" >
                <i class="fa-solid fa-forward icon-click" @click="nextCard()"></i>
        
             <p class="title-level">
@@ -82,6 +100,7 @@ export default{
             itemsPerPage:1,
             cardmessage:false,
             closecardword:true,
+            showEnglish:true,
         }
     },
     created(){
@@ -97,6 +116,9 @@ export default{
             return Math.ceil(this.wordlist.length / this.itemsPerPage);
             
         },
+        progressPercent(){
+            return (this.currentPage/this.totalPages)*100;
+        },
           paginatedWords() {
             const start = (this.currentPage - 1) * this.itemsPerPage;
             console.log({currentPage:this.currentpage})
@@ -110,12 +132,20 @@ export default{
                 if (this.currentPage === this.totalPages) {
                     this.cardmessage=!this.cardmessage
                     this.closecardword=!this.closecardword
+                   
                 } else {
                     this.currentPage++;
+                    this.showEnglish = true
                 }
             },
-            speakWord(){
-                
+
+            // cập nhật dữ liệu từ con ---> cha thông qua $emit truyền từ con 
+            handleShowEnglish(newValue) {
+                this.showEnglish = newValue;
+            },
+        
+            closeModal(){
+                this.cardmessage=false;
             }
            
        
@@ -127,10 +157,15 @@ export default{
 </script>
 
 <style scoped>
+
+
 .word-detail-container{
       margin-top: 200px;
     margin-bottom: 100px;
     width: 100%;
+}
+.fa-circle-check{
+    color: #4a33d9 !important;
 }
 .message-card-detail{
     width: 800px;
@@ -138,6 +173,17 @@ export default{
     background-color: #f8efbc;
     margin: 0 auto;
     border-radius: 10px;
+}
+.title-bold{
+    color: #dd0182;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1050;
 }
 .container-word-detail{
     /* width: 1000px;
@@ -148,6 +194,54 @@ export default{
 
     margin: 0 auto;
     border-radius: 20px; */
+}
+
+
+.container-progress{
+    width: 700px;
+    margin: 0 auto;
+    position: relative;
+}
+.fa-flag{
+    position: absolute;
+    bottom: 0px;
+    left: -30px;
+    font-size: 25px;
+    color:#4a33d9;
+}
+.fa-bullseye{
+     position: absolute;
+    bottom: px;
+    right: -30px;
+    font-size: 25px;
+    color:#dd0182;
+}
+
+.progress-bar-container{
+    width: 100%;
+    height: 25px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin: 10px 0;
+    overflow: hidden;
+    position: relative;
+ 
+  
+}
+
+.progress-bar{
+    height: 100%;
+    background-color: #dd0182;
+    transition: width 0.3s ease;
+   
+}
+
+.plane-icon{
+    color: #4a33d9;
+    position: absolute;
+    font-size: 28px;
+    transform: translateX(-50%) rotate(45deg);
+    
 }
 .title-next{
     width: 180px;
@@ -180,7 +274,9 @@ export default{
     margin: 0 auto;
     border-radius: 20px;
     padding-top: 15px;
+    position: relative;
 }
+
 .content-notice{
     height: 100%;
     padding: 15px;
@@ -190,6 +286,14 @@ export default{
     font-size: 15px;
     color: #855a1f;
 
+}
+.button-close{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    color: #dd0182;
+    
 }
 .icon-list{
     margin: 0 auto;
@@ -242,7 +346,10 @@ export default{
     .word-detail-container{
         
     }
-
+.container-progress{
+    width: 70%;
+   
+}
     .message-card-detail{
         width: 90%;
     }
@@ -269,6 +376,9 @@ export default{
     .title-word-page{
         width: 90%;
         margin: 0 auto;
+    }
+    .plane-icon{
+        font-size: 25px;
     }
    
 }

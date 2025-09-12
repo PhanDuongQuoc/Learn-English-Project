@@ -1,0 +1,27 @@
+const optionlanguage=  [
+     { value: 'tieng_viet', label: 'Tiếng Việt' },
+    { value: 'tieng_anh', label: 'Tiếng Anh' },
+    { value: 'tieng_nhat', label: 'Tiếng Nhật' },
+    { value: 'tieng_han', label: 'Tiếng Hàn' },
+    { value: 'tieng_trung', label: 'Tiếng Trung' },
+    { value: 'tieng_phap', label: 'Tiếng Pháp' },
+    { value: 'tieng_duc', label: 'Tiếng Đức' },
+    { value: 'tieng_tay_ban_nha', label: 'Tiếng Tây Ban Nha' },
+    { value: 'tieng_nga', label: 'Tiếng Nga' },
+    { value: 'tieng_y', label: 'Tiếng Ý' },
+    { value: 'tieng_bo_dao_nha', label: 'Tiếng Bồ Đào Nha' },
+    { value: 'tieng_thai', label: 'Tiếng Thái' },
+    { value: 'tieng_in_do', label: 'Tiếng Ấn Độ' },
+    { value: 'tieng_arap', label: 'Tiếng Ả Rập' },
+    { value: 'tieng_thuy_dien', label: 'Tiếng Thụy Điển' },
+    { value: 'tieng_phan_lan', label: 'Tiếng Phần Lan' },
+    { value: 'tieng_dan_mach', label: 'Tiếng Đan Mạch' },
+    { value: 'tieng_hy_lap', label: 'Tiếng Hy Lạp' },
+    { value: 'tieng_latinh', label: 'Tiếng Latinh' },
+    { value: 'tieng_ha_lan', label: 'Tiếng Hà Lan' },
+    { value: 'tieng_se_rbi', label: 'Tiếng Serbia' },
+    { value: 'tieng_ba_lan', label: 'Tiếng Ba Lan' },
+    { value: 'tieng_séc', label: 'Tiếng Séc' },
+]
+
+export default optionlanguage

@@ -61,7 +61,9 @@
                         <RouterLink class="nav-link" @click="toggleMenu" to="/learn-english/tu-vung-tieng-anh">Từ vựng</RouterLink>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" @click="toggleMenu" href="#">Blog</a>
+                        <RouterLink class="nav-link" @click="toggleMenu" to="/learn-english/tin-tuc-tieng-anh">Blog
+
+                        </RouterLink>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" @click="toggleMenu" href="#">Video</a>
@@ -136,6 +138,7 @@ import LoginDialog from '@/components/AuthDialog/LoginDialog.vue';
 import ResetPasswordDialog from '@/components/AuthDialog/ResetPasswordDialog.vue';
 import ClauseCard from '@/components/AuthDialog/ClauseCard.vue';
 import SettingCard from '@/components/Settings/SettingCard.vue';
+import OptionLanguageService from '@/services/OptionServices/OptionLanguageService';
 import { RouterLink } from 'vue-router';
 
 export default{
@@ -171,34 +174,13 @@ export default{
             isMenuOpen: false,
             isMenuOpen_2:false,
             lang: ['tieng_viet'],
-            languageOptions :[
-                { value: 'tieng_viet', label: 'Tiếng Việt' },
-                { value: 'tieng_anh', label: 'Tiếng Anh' },
-                { value: 'tieng_nhat', label: 'Tiếng Nhật' },
-                { value: 'tieng_han', label: 'Tiếng Hàn' },
-                { value: 'tieng_trung', label: 'Tiếng Trung' },
-                { value: 'tieng_phap', label: 'Tiếng Pháp' },
-                { value: 'tieng_duc', label: 'Tiếng Đức' },
-                { value: 'tieng_tay_ban_nha', label: 'Tiếng Tây Ban Nha' },
-                { value: 'tieng_nga', label: 'Tiếng Nga' },
-                { value: 'tieng_y', label: 'Tiếng Ý' },
-                { value: 'tieng_bo_dao_nha', label: 'Tiếng Bồ Đào Nha' },
-                { value: 'tieng_thai', label: 'Tiếng Thái' },
-                { value: 'tieng_in_do', label: 'Tiếng Ấn Độ' },
-                { value: 'tieng_arap', label: 'Tiếng Ả Rập' },
-                { value: 'tieng_thuy_dien', label: 'Tiếng Thụy Điển' },
-                { value: 'tieng_phan_lan', label: 'Tiếng Phần Lan' },
-                { value: 'tieng_dan_mach', label: 'Tiếng Đan Mạch' },
-                { value: 'tieng_hy_lap', label: 'Tiếng Hy Lạp' },
-                { value: 'tieng_latinh', label: 'Tiếng Latinh' },
-                { value: 'tieng_ha_lan', label: 'Tiếng Hà Lan' },
-                { value: 'tieng_se_rbi', label: 'Tiếng Serbia' },
-                { value: 'tieng_ba_lan', label: 'Tiếng Ba Lan' },
-                { value: 'tieng_séc', label: 'Tiếng Séc' },
-            ]
+            languageOptions :[] ||'dữ liệu không tồn tại'
 
         }
         
+    },
+    created(){
+        this.optionData()
     },
     mounted() {
         window.addEventListener('scroll', this.handleScroll);
@@ -206,7 +188,18 @@ export default{
         beforeUnmount() {
          window.removeEventListener('scroll', this.handleScroll);
         },
+
+
+    computed:{
+       
+        
+    },
     methods: {
+        optionData(){
+         
+            const data = new OptionLanguageService()
+            this.languageOptions = data.loadData()
+        },
         handleScroll() {
             const currentScroll = window.scrollY;
             const mainHeader = document.querySelector('.main-header');

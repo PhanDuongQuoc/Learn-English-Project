@@ -29,7 +29,10 @@
                     <i class="fa-solid fa-file-excel"></i>
                 </div>
                 <div class="reset  margin-all">
-                    <i class="fa-solid fa-rotate-right"></i>
+                    <RouterLink to="/learn-english/tu-vung-tieng-anh/chu-de">
+
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </RouterLink>
                 </div>
           
 

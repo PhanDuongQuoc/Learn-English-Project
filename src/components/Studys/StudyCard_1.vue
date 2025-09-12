@@ -32,7 +32,7 @@ export default{
     data(){
         
         return{
-            showEnglish:true,
+            showEnglish:this.showFlash,
          
             
         }
@@ -41,7 +41,16 @@ export default{
         Words: {
             type: Object,
             required: true
-            }
+            },
+        showFlash:{
+            type:Boolean,
+            default:true
+        }
+    },
+    watch: {
+        showFlash(newVal) {
+            this.showEnglish = newVal
+        }
     },
     // created(){
     //    this.showdetail()
@@ -56,7 +65,8 @@ export default{
     methods:{
         functionShowMean(){
             this.showEnglish = !this.showEnglish
-
+            this.$emit('update:showEnglish',this.showEnglish)
+        
         },
         speakWord(){
             const speakWord = this.Words.word
